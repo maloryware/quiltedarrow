@@ -1,0 +1,14 @@
+{
+  "item.quilted_arrow.woven_leather_strip": "Woven Leather Strip",
+  "item.quilted_arrow.woven_leather_patch": "Woven Leather Patch",
+  "item.quilted_arrow.woven_leather_block": "Woven Leather Block",
+
+  "item.quilted_arrow.skeleton_helmet": "Skeleton Mask",
+  "item.quilted_arrow.skeleton_chestplate": "Skeleton Chest Rig",
+  "item.quilted_arrow.skeleton_leggings": "Skeleton Waistband",
+  "item.quilted_arrow.skeleton_boots": "Skeleton Shin Guards",
+
+
+
+  "itemGroup.quilted_arrow.combat": "Quilted Arrow - Combat"
+}

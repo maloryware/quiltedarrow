@@ -11,11 +11,11 @@ import java.util.function.Supplier;
 
 public enum QArrowArmorMaterial implements ArmorMaterial {
 
-	BONE("bone", 1, new int[]{2, 5, 7, 1}, 0, SoundEvents.BLOCK_BONE_BLOCK_BREAK, 0.5F, 0.0F, () -> {
+	BONE("bone", 1, new int[]{11, 15, 16, 13}, 0, SoundEvents.BLOCK_BONE_BLOCK_BREAK, 0.5F, 0.0F, () -> {
 		return null;
 	});
 
-	private static final int[] BASE_DURABILITY = new int[]{13, 15, 16, 11};
+	private static final int[] BASE_DURABILITY = new int[]{1, 3, 2, 1};
 	private final String name;
 	private final int durabilityMultiplier;
 	private final int[] protectionAmounts;

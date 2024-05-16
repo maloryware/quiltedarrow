@@ -16,7 +16,8 @@
         },
         "intermediate_mappings": "net.fabricmc:intermediary",
         "entrypoints": {
-            "init": "io.github.maloryware.quilted_arrow.QuiltedArrow"
+            "init": "io.github.maloryware.quilted_arrow.QuiltedArrow",
+						"client_init": "io.github.maloryware.quilted_arrow.QuiltedArrowClient"
         },
         "depends": [
             {
@@ -25,11 +26,11 @@
             },
             {
                 "id": "quilted_fabric_api",
-                "versions": ">=3.0.0"
+                "versions": ">=4.0.0-beta.30+0.77.0-1.19.2"
             },
             {
                 "id": "minecraft",
-                "versions": ">=1.19.2"
+                "versions": "=1.19.2"
             }
         ]
     },

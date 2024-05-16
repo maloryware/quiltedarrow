@@ -1,5 +1,6 @@
 package io.github.maloryware.quilted_arrow.item;
 
+import io.github.maloryware.quilted_arrow.geckolib.SkeletonSet.QArrowSkeletonArmorSetPiece;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
@@ -16,19 +17,29 @@ public class QArrowItems {
 
 
 	// skeleton armor set
-	public static final Item SKELETON_HELMET = new QArrowArmorItem(QArrowArmorMaterial.BONE, EquipmentSlot.HEAD,
-		new QuiltItemSettings().group(QArrowItemTab.QUILTEDARROWCOMBAT));
+	public static final Item SKELETON_HELMET = new QArrowSkeletonArmorSetPiece(
+		QArrowArmorMaterial.BONE,
+		EquipmentSlot.HEAD,
+		new QuiltItemSettings()
+			.group(QArrowItemTab.QUILTEDARROWCOMBAT));
 
-	public static final Item SKELETON_CHESTPLATE = new QArrowArmorItem(QArrowArmorMaterial.BONE, EquipmentSlot.CHEST,
-		new QuiltItemSettings().group(QArrowItemTab.QUILTEDARROWCOMBAT));
+	public static final Item SKELETON_CHESTPLATE = new QArrowSkeletonArmorSetPiece(
+		QArrowArmorMaterial.BONE,
+		EquipmentSlot.CHEST,
+		new QuiltItemSettings()
+			.group(QArrowItemTab.QUILTEDARROWCOMBAT));
 
-	public static final Item SKELETON_LEGGINGS = new QArrowArmorItem(QArrowArmorMaterial.BONE, EquipmentSlot.LEGS,
-		new QuiltItemSettings().group(QArrowItemTab.QUILTEDARROWCOMBAT));
+	public static final Item SKELETON_LEGGINGS = new QArrowSkeletonArmorSetPiece(
+		QArrowArmorMaterial.BONE,
+		EquipmentSlot.LEGS,
+		new QuiltItemSettings()
+			.group(QArrowItemTab.QUILTEDARROWCOMBAT));
 
-	public static final Item SKELETON_BOOTS = new QArrowArmorItem(QArrowArmorMaterial.BONE, EquipmentSlot.FEET,
-		new QuiltItemSettings().group(QArrowItemTab.QUILTEDARROWCOMBAT));
-
-
+	public static final Item SKELETON_BOOTS = new QArrowSkeletonArmorSetPiece(
+		QArrowArmorMaterial.BONE,
+		EquipmentSlot.FEET,
+		new QuiltItemSettings()
+			.group(QArrowItemTab.QUILTEDARROWCOMBAT));
 
 
 

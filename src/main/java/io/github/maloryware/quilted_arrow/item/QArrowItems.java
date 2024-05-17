@@ -12,8 +12,8 @@ import org.quiltmc.qsl.item.setting.api.QuiltItemSettings;
 
 public class QArrowItems {
 
-	public static final Item WOVEN_LEATHER_STRIP = new Item(new QuiltItemSettings().group(ItemGroup.MISC));
-	public static final Item WOVEN_LEATHER_PATCH = new Item(new QuiltItemSettings().group(ItemGroup.MISC));
+	public static final Item WOVEN_LEATHER_STRIP = new Item(new QuiltItemSettings().group(QArrowItemTab.QUILTEDARROWCOMBAT));
+	public static final Item WOVEN_LEATHER_PATCH = new Item(new QuiltItemSettings().group(QArrowItemTab.QUILTEDARROWCOMBAT));
 
 
 	// skeleton armor set

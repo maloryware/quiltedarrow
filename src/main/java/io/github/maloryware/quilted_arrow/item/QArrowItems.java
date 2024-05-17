@@ -18,25 +18,25 @@ public class QArrowItems {
 
 	// skeleton armor set
 	public static final Item SKELETON_HELMET = new QArrowSkeletonArmorSetPiece(
-		QArrowArmorMaterial.BONE,
+		QArrowArmorMaterials.BONE,
 		EquipmentSlot.HEAD,
 		new QuiltItemSettings()
 			.group(QArrowItemTab.QUILTEDARROWCOMBAT));
 
 	public static final Item SKELETON_CHESTPLATE = new QArrowSkeletonArmorSetPiece(
-		QArrowArmorMaterial.BONE,
+		QArrowArmorMaterials.BONE,
 		EquipmentSlot.CHEST,
 		new QuiltItemSettings()
 			.group(QArrowItemTab.QUILTEDARROWCOMBAT));
 
 	public static final Item SKELETON_LEGGINGS = new QArrowSkeletonArmorSetPiece(
-		QArrowArmorMaterial.BONE,
+		QArrowArmorMaterials.BONE,
 		EquipmentSlot.LEGS,
 		new QuiltItemSettings()
 			.group(QArrowItemTab.QUILTEDARROWCOMBAT));
 
 	public static final Item SKELETON_BOOTS = new QArrowSkeletonArmorSetPiece(
-		QArrowArmorMaterial.BONE,
+		QArrowArmorMaterials.BONE,
 		EquipmentSlot.FEET,
 		new QuiltItemSettings()
 			.group(QArrowItemTab.QUILTEDARROWCOMBAT));

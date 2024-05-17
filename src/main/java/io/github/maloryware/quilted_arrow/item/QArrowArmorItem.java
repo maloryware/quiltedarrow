@@ -15,14 +15,12 @@ import java.util.Map;
 
 public class QArrowArmorItem extends ArmorItem {
 
-	private static final Map<ArmorMaterial, StatusEffectInstance> MATERIAL_TO_EFFECT_MAP =
+	private static final Map<ArmorMaterial, StatusEffectInstance> BONE_MATERIAL_TO_EFFECT_MAP =
 		(new ImmutableMap.Builder<ArmorMaterial, StatusEffectInstance>())
-			.put(QArrowArmorMaterial.BONE, new StatusEffectInstance(StatusEffects.SPEED, 999, 1)).build();
+			.put(QArrowArmorMaterials.BONE, new StatusEffectInstance(StatusEffects.SPEED, 0, 1)).build();
 
 
-
-
-
+	// never again GOOD fucking LORD
 
 	public QArrowArmorItem(ArmorMaterial material, EquipmentSlot slot, Settings settings){
 		super(material, slot, settings);
@@ -31,8 +29,9 @@ public class QArrowArmorItem extends ArmorItem {
 	@Override
 	public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
 		if(!world.isClient()){
-			if(entity instanceof PlayerEntity) {
-				PlayerEntity player = (PlayerEntity)entity;
+
+			//if shit hits the fan, change this back to how it was (see kaupenjoe vid)
+			if(entity instanceof PlayerEntity player) {
 
 				if(hasFullSuitOfArmorOn(player)){
 					evaluateArmorEffects(player);
@@ -44,7 +43,7 @@ public class QArrowArmorItem extends ArmorItem {
 	}
 
 	private void evaluateArmorEffects(PlayerEntity player){
-		for (Map.Entry<ArmorMaterial, StatusEffectInstance> entry : MATERIAL_TO_EFFECT_MAP.entrySet()) {
+		for (Map.Entry<ArmorMaterial, StatusEffectInstance> entry : BONE_MATERIAL_TO_EFFECT_MAP.entrySet()) {
 			ArmorMaterial mapArmorMaterial = entry.getKey();
 			StatusEffectInstance mapStatusEffect = entry.getValue();
 

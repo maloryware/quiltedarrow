@@ -14,10 +14,16 @@ import org.spongepowered.include.com.google.common.collect.ImmutableMap;
 import java.util.Map;
 
 public class QArrowArmorItem extends ArmorItem {
-
-	private static final Map<ArmorMaterial, StatusEffectInstance> BONE_MATERIAL_TO_EFFECT_MAP =
+	// TODO: replace StatusEffects.SPEED with new custom status effect
+	private static final Map<ArmorMaterial, StatusEffectInstance> MATERIAL_TO_EFFECT_MAP =
 		(new ImmutableMap.Builder<ArmorMaterial, StatusEffectInstance>())
-			.put(QArrowArmorMaterials.BONE, new StatusEffectInstance(StatusEffects.SPEED, 0, 1)).build();
+
+			// you can only have one effect per material, no more
+			// like functions or whatever where 1 object means 1 image
+			// idk i stopped paying attention to math classes after 4th grade
+
+			.put(QArrowArmorMaterials.BONE, new StatusEffectInstance(StatusEffects.SPEED, 0, 1))
+			.build();
 
 
 	// never again GOOD fucking LORD
@@ -31,6 +37,7 @@ public class QArrowArmorItem extends ArmorItem {
 		if(!world.isClient()){
 
 			//if shit hits the fan, change this back to how it was (see kaupenjoe vid)
+
 			if(entity instanceof PlayerEntity player) {
 
 				if(hasFullSuitOfArmorOn(player)){
@@ -43,7 +50,7 @@ public class QArrowArmorItem extends ArmorItem {
 	}
 
 	private void evaluateArmorEffects(PlayerEntity player){
-		for (Map.Entry<ArmorMaterial, StatusEffectInstance> entry : BONE_MATERIAL_TO_EFFECT_MAP.entrySet()) {
+		for (Map.Entry<ArmorMaterial, StatusEffectInstance> entry : MATERIAL_TO_EFFECT_MAP.entrySet()) {
 			ArmorMaterial mapArmorMaterial = entry.getKey();
 			StatusEffectInstance mapStatusEffect = entry.getValue();
 

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "Q#Q",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:bone"
+    },
+    "Q": {
+      "item": "quilted_arrow:woven_leather_patch"
+    }
+  },
+  "result": {
+    "item": "quilted_arrow:ribcage",
+    "count": 1
+  },
+  "group": "skeleton_set_component"
+}

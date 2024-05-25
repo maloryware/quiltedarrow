@@ -18,3 +18,5 @@
 - holy armor
 - cursed holy armor
 - new material (metal derived) + tools (unspecified)
+
+

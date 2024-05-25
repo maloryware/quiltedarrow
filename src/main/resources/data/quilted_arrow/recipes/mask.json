@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#N#",
+    "#S#",
+    " Q "
+  ],
+  "key": {
+    "#": {
+      "item": "quilted_arrow:woven_leather_strip"
+    },
+    "N": {
+      "item": "minecraft:nether_star"
+    },
+    "S": {
+      "item": "minecraft:skeleton_skull"
+    },
+    "Q": {
+      "item": "quilted_arrow:woven_leather_patch"
+    }
+  },
+  "result": {
+    "quilted_arrow": "skeleton_helmet",
+    "count": 1
+  },
+  "group": "skeleton_set_component"
+}

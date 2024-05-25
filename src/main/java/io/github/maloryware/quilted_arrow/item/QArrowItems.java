@@ -28,19 +28,23 @@ public class QArrowItems {
 		QArrowArmorMaterials.BONE,
 		EquipmentSlot.HEAD,
 		new QuiltItemSettings()
-			.group(QArrowItemTab.QUILTEDARROWCOMBAT).group(QArrowItemTab.QUILTEDARROWCORE));
+			.group(QArrowItemTab.QUILTEDARROWCOMBAT)
+			.group(QArrowItemTab.QUILTEDARROWCORE));
 
 	public static final Item SKELETON_CHESTPLATE = new QArrowSkeletonArmorSetPiece(
 		QArrowArmorMaterials.BONE,
 		EquipmentSlot.CHEST,
 		new QuiltItemSettings()
-			.group(QArrowItemTab.QUILTEDARROWCOMBAT).group(QArrowItemTab.QUILTEDARROWCORE));
+			.group(QArrowItemTab.QUILTEDARROWCOMBAT)
+			.group(QArrowItemTab.QUILTEDARROWCORE));
+
 
 	public static final Item SKELETON_LEGGINGS = new QArrowSkeletonArmorSetPiece(
 		QArrowArmorMaterials.BONE,
 		EquipmentSlot.LEGS,
 		new QuiltItemSettings()
-			.group(QArrowItemTab.QUILTEDARROWCOMBAT).group(QArrowItemTab.QUILTEDARROWCORE));
+			.group(QArrowItemTab.QUILTEDARROWCOMBAT)
+			.group(QArrowItemTab.QUILTEDARROWCORE));
 
 	public static final Item SKELETON_BOOTS = new QArrowSkeletonArmorSetPiece(
 		QArrowArmorMaterials.BONE,
@@ -55,9 +59,9 @@ public class QArrowItems {
 		Registry.register(Registry.ITEM, new Identifier(mod.metadata().id(), "woven_leather_patch"), WOVEN_LEATHER_PATCH);
 
 		Registry.register(Registry.ITEM, new Identifier(mod.metadata().id(), "woven_leather_padding"), WOVEN_LEATHER_PADDING);
-		Registry.register(Registry.ITEM, new Identifier(mod.metadata().id(), "skeleton_ribcage"), SKELETON_RIBCAGE);
-		Registry.register(Registry.ITEM, new Identifier(mod.metadata().id(), "skeleton_spine"), SKELETON_SPINE);
-		Registry.register(Registry.ITEM, new Identifier(mod.metadata().id(), "skeleton_belt"), SKELETON_BELT);
+		Registry.register(Registry.ITEM, new Identifier(mod.metadata().id(), "ribcage"), SKELETON_RIBCAGE);
+		Registry.register(Registry.ITEM, new Identifier(mod.metadata().id(), "spine"), SKELETON_SPINE);
+		Registry.register(Registry.ITEM, new Identifier(mod.metadata().id(), "bone_belt"), SKELETON_BELT);
 
 		Registry.register(Registry.ITEM, new Identifier(mod.metadata().id(), "skeleton_helmet"), SKELETON_HELMET);
 		Registry.register(Registry.ITEM, new Identifier(mod.metadata().id(), "skeleton_chestplate"), SKELETON_CHESTPLATE);

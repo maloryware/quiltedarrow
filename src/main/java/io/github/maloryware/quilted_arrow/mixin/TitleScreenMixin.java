@@ -11,6 +11,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class TitleScreenMixin {
     @Inject(method = "init", at = @At("TAIL"))
     public void onInit(CallbackInfo ci) {
-        QuiltedArrow.LOGGER.info("This line is printed by an example mod mixin!");
+        QuiltedArrow.LOGGER.info("Quilted Arrow Essentials mixin initialized - hope and pray nothing breaks.");
     }
 }

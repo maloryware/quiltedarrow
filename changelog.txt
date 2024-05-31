@@ -1,0 +1,9 @@
+LATEST CHANGES:
+
+MODPACK
+- Fixed all the stupid shit going on
+- Probably fucked something up idk
+
+CORE MOD
+- Added "Stealth" effect (still uncoded lmfao)
+- But hey, at least it's in code! ...sorta

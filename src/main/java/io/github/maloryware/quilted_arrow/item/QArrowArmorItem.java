@@ -1,5 +1,8 @@
 package io.github.maloryware.quilted_arrow.item;
 
+import io.github.maloryware.quilted_arrow.effects.QArrowEffects;
+import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -8,13 +11,16 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.ItemStack;
+import net.minecraft.text.Text;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 import org.spongepowered.include.com.google.common.collect.ImmutableMap;
 
+import java.util.List;
 import java.util.Map;
 
 public class QArrowArmorItem extends ArmorItem {
-	// TODO: replace StatusEffects.SPEED with new custom status effect
+	// TODO: replace StatusEffects.SPEED with new STEALTH custom status effect
 	private static final Map<ArmorMaterial, StatusEffectInstance> MATERIAL_TO_EFFECT_MAP =
 		(new ImmutableMap.Builder<ArmorMaterial, StatusEffectInstance>())
 
@@ -22,13 +28,14 @@ public class QArrowArmorItem extends ArmorItem {
 			// like functions or whatever where 1 object means 1 image
 			// idk i stopped paying attention to math classes after 4th grade
 
-			.put(QArrowArmorMaterials.BONE, new StatusEffectInstance(StatusEffects.SPEED, 0, 1))
+			.put(QArrowArmorMaterials.BONE, new StatusEffectInstance(QArrowEffects.STEALTH, 0, 0))
 			.build();
 
 
 	// never again GOOD fucking LORD
 
-	public QArrowArmorItem(ArmorMaterial material, EquipmentSlot slot, Settings settings){
+
+    public QArrowArmorItem(ArmorMaterial material, EquipmentSlot slot, Settings settings){
 		super(material, slot, settings);
 	}
 

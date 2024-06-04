@@ -5,6 +5,7 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.Rarity;
 import net.minecraft.util.registry.Registry;
 import org.quiltmc.loader.api.ModContainer;
 import org.quiltmc.qsl.item.setting.api.QuiltItemSettings;
@@ -14,7 +15,7 @@ public class QArrowItems {
 
 	public static final Item WOVEN_LEATHER_STRIP = new Item(new QuiltItemSettings().group(QArrowItemTab.QUILTEDARROWCORE));
 	public static final Item WOVEN_LEATHER_PATCH = new Item(new QuiltItemSettings().group(QArrowItemTab.QUILTEDARROWCORE));
-	public static final Item QUILTED_ARROW = new Item(new QuiltItemSettings());
+	public static final Item QUILTED_ARROW = new Item(new QuiltItemSettings().rarity(Rarity.RARE));
 
 	// untextured
 
@@ -45,6 +46,8 @@ public class QArrowItems {
 		new QuiltItemSettings()
 			.group(QArrowItemTab.QUILTEDARROWCOMBAT)
 			.group(QArrowItemTab.QUILTEDARROWCORE));
+
+
 
 	public static final Item SKELETON_BOOTS = new QArrowSkeletonArmorSetPiece(
 		QArrowArmorMaterials.BONE,

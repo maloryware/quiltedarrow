@@ -21,9 +21,7 @@ public enum QArrowArmorMaterials implements ArmorMaterial {
 	// i spent 20 minutes trying to figure out why my chestplate had 3 protection..... smigh
 	// no i'm not dumb. nuh uh. no. it's. lib devs. they're bad. i'm genius. real. type 1
 
-	BONE("bone", 1, new int[]{11, 15, 16, 13}, 0, SoundEvents.BLOCK_BONE_BLOCK_BREAK, 0.5F, 0.0F, () -> {
-		return null;
-	});
+	BONE("bone", 1, new int[]{11, 15, 16, 13}, 0, SoundEvents.BLOCK_BONE_BLOCK_BREAK, 0.5F, 0.0F, () -> null);
 
 	private static final int[] BASE_DURABILITY = new int[]{1, 2, 3, 1};
 	private final String name;

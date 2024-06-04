@@ -9,16 +9,19 @@
   "item.quilted_arrow.spine": "Spine",
   "item.quilted_arrow.bone_belt": "Bone Belt",
 
-  "item.quilted_arrow.quilted_arrow": "...A Quilted Arrow?",
+  "item.quilted_arrow.quilted_arrow": "§d§o§lQuilted Arrow",
 
 
-  "item.quilted_arrow.skeleton_helmet": "Skeleton Mask",
-  "item.quilted_arrow.skeleton_chestplate": "Skeleton Chest Rig",
-  "item.quilted_arrow.skeleton_leggings": "Skeleton Leg Straps",
-  "item.quilted_arrow.skeleton_boots": "Skeleton Shin Guards",
+  "item.quilted_arrow.skeleton_helmet": "§8§oSkeleton Mask",
+  "item.quilted_arrow.skeleton_chestplate": "§8§oSkeleton Chest Rig",
+  "item.quilted_arrow.skeleton_leggings": "§8§oSkeleton Leg Straps",
+  "item.quilted_arrow.skeleton_boots": "§8§oSkeleton Shin Guards",
 
 
 
   "itemGroup.quilted_arrow.combat": "Quilted Arrow - Combat",
-  "itemGroup.quilted_arrow.core": "Quilted Arrow"
+  "itemGroup.quilted_arrow.core": "Quilted Arrow",
+
+
+  "effect.quilted_arrow.stealth": "Stealth"
 }

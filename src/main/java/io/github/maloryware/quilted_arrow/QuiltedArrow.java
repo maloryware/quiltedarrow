@@ -1,5 +1,6 @@
 package io.github.maloryware.quilted_arrow;
 
+import io.github.maloryware.quilted_arrow.effects.QArrowEffects;
 import io.github.maloryware.quilted_arrow.item.QArrowBlocks;
 import io.github.maloryware.quilted_arrow.item.QArrowItems;
 import org.quiltmc.loader.api.ModContainer;
@@ -13,10 +14,15 @@ public class QuiltedArrow implements ModInitializer {
 	public static final String ID = "quilted_arrow";
     @Override
     public void onInitialize(ModContainer mod) {
+
         LOGGER.info("{} initialized.", mod.metadata().name());
 
 		GeckoLib.initialize();
+		QArrowEffects.registerEffects();
+		// remember to initialize shit in the right order you fucking dingus
 		QArrowItems.register(mod);
 		QArrowBlocks.register(mod);
+
+
     }
 }

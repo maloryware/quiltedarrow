@@ -1,0 +1,43 @@
+{
+  "minecraft:adventure/avoid_vibration": {
+    "criteria": {
+      "avoid_vibration": "2024-05-16 21:33:15 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/chest": {
+    "criteria": {
+      "has_lots_of_items": "2024-05-16 21:25:15 +0100"
+    },
+    "done": true
+  },
+  "minecraft:adventure/root": {
+    "criteria": {
+      "killed_by_something": "2024-05-16 21:33:43 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/food/cake": {
+    "criteria": {
+      "has_egg": "2024-05-16 21:32:39 +0100"
+    },
+    "done": true
+  },
+  "minecraft:adventure/adventuring_time": {
+    "criteria": {
+      "minecraft:dark_forest": "2024-05-16 21:25:16 +0100",
+      "minecraft:river": "2024-05-16 21:34:16 +0100",
+      "minecraft:forest": "2024-05-16 21:33:08 +0100",
+      "minecraft:old_growth_birch_forest": "2024-05-16 21:27:20 +0100",
+      "minecraft:plains": "2024-05-16 21:34:18 +0100"
+    },
+    "done": false
+  },
+  "minecraft:nether/netherite_armor": {
+    "criteria": {
+      "netherite_armor": "2024-05-16 21:35:16 +0100"
+    },
+    "done": true
+  },
+  "DataVersion": 3120
+}

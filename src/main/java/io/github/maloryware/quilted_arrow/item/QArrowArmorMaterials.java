@@ -14,6 +14,7 @@ import java.util.function.Supplier;
 
 // SHUT THE FUCK UP GRAAAAAH IF THERE'S NO ALTERNATIVE THEN STOP BITCHING
 @SuppressWarnings("deprecation")
+
 public enum QArrowArmorMaterials implements ArmorMaterial {
 
 	// ah yeah no sure dude makes sense have the durability multiplier followed by the PROTECTION VALUE then when declaring the values

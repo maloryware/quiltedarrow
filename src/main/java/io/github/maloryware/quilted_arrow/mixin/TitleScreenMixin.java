@@ -9,8 +9,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(TitleScreen.class)
 public class TitleScreenMixin {
-    @Inject(method = "init", at = @At("TAIL"))
-    public void onInit(CallbackInfo ci) {
-        QuiltedArrow.LOGGER.info("Quilted Arrow Essentials mixin initialized - hope and pray nothing breaks.");
-    }
+	@Inject(method = "init", at = @At("TAIL"))
+	public void onInit(CallbackInfo ci) {
+		QuiltedArrow.LOGGER.info("Quilted Arrow Essentials mixin initialized - hope and pray nothing breaks.");
+	}
 }

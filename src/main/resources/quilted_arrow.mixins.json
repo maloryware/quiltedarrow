@@ -4,7 +4,7 @@
   "package": "io.github.maloryware.quilted_arrow.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "TargetMixin"
+    "LivingEntityCanTargetMixin"
   ],
   "client": [
     "TitleScreenMixin"

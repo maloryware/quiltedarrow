@@ -23,10 +23,15 @@ import java.util.HashSet;
 import java.util.List;
 
 public class QArrowSkeletonArmorSetPiece extends QArrowArmorItem implements IAnimatable {
+	// if i ever have to touch this file, open this file, rewrite this file,
+	// change code inside this file, look at the functions inside this file,
+	// debug code found within this file, or do anything related to this file,
+	// i will wear a bomb vest and walk *straight* into geckolib's developer's
+	// parent's home.
 
 	private final AnimationFactory factory = GeckoLibUtil.createFactory(this);
 
-	public QArrowSkeletonArmorSetPiece(ArmorMaterial material, EquipmentSlot slot, Settings settings){
+	public QArrowSkeletonArmorSetPiece(ArmorMaterial material, EquipmentSlot slot, Settings settings) {
 		super(material, slot, settings);
 	}
 
@@ -72,6 +77,7 @@ public class QArrowSkeletonArmorSetPiece extends QArrowArmorItem implements IAni
 	public void registerControllers(AnimationData data) {
 		data.addAnimationController(new AnimationController(this, "controller", 20, this::predicate));
 	}
+
 
 	@Override
 	public AnimationFactory getFactory() {

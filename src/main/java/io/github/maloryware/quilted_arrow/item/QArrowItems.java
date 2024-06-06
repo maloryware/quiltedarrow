@@ -3,7 +3,6 @@ package io.github.maloryware.quilted_arrow.item;
 import io.github.maloryware.quilted_arrow.geckolib.SkeletonSet.QArrowSkeletonArmorSetPiece;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 import net.minecraft.util.registry.Registry;
@@ -48,13 +47,11 @@ public class QArrowItems {
 			.group(QArrowItemTab.QUILTEDARROWCORE));
 
 
-
 	public static final Item SKELETON_BOOTS = new QArrowSkeletonArmorSetPiece(
 		QArrowArmorMaterials.BONE,
 		EquipmentSlot.FEET,
 		new QuiltItemSettings()
 			.group(QArrowItemTab.QUILTEDARROWCOMBAT).group(QArrowItemTab.QUILTEDARROWCORE));
-
 
 
 	public static void register(ModContainer mod) {

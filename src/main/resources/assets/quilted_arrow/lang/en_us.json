@@ -3,25 +3,18 @@
   "item.quilted_arrow.woven_leather_patch": "Woven Leather Patch",
   "item.quilted_arrow.woven_leather_padding": "Woven Leather Padding",
   "item.quilted_arrow.woven_leather_block": "Woven Leather Block",
-
-
   "item.quilted_arrow.ribcage": "Ribcage",
   "item.quilted_arrow.spine": "Spine",
   "item.quilted_arrow.bone_belt": "Bone Belt",
-
   "item.quilted_arrow.quilted_arrow": "§d§o§lQuilted Arrow",
-
-
   "item.quilted_arrow.skeleton_helmet": "§8§oSkeleton Mask",
   "item.quilted_arrow.skeleton_chestplate": "§8§oSkeleton Chest Rig",
   "item.quilted_arrow.skeleton_leggings": "§8§oSkeleton Leg Straps",
   "item.quilted_arrow.skeleton_boots": "§8§oSkeleton Shin Guards",
 
-
-
   "itemGroup.quilted_arrow.combat": "Quilted Arrow - Combat",
   "itemGroup.quilted_arrow.core": "Quilted Arrow",
 
-
-  "effect.quilted_arrow.stealth": "Stealth"
+  "effect.quilted_arrow.stealth": "Stealth",
+  "effect.quilted_arrow.rage": "Enraged"
 }

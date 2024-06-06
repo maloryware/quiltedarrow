@@ -33,3 +33,103 @@ workspace/
 # macOS
 *.DS_Store
 !/run/
+/run/logs/2024-06-04-1.log.gz
+/run/logs/2024-06-04-2.log.gz
+/run/logs/2024-06-04-3.log.gz
+/run/logs/2024-06-04-4.log.gz
+/run/logs/2024-06-04-5.log.gz
+/run/logs/2024-06-04-6.log.gz
+/run/logs/2024-06-05-1.log.gz
+/run/logs/2024-06-05-2.log.gz
+/run/logs/2024-06-05-3.log.gz
+/run/logs/2024-06-05-4.log.gz
+/run/logs/2024-06-05-5.log.gz
+/run/logs/2024-06-05-6.log.gz
+/run/logs/2024-06-05-7.log.gz
+/run/logs/2024-06-06-1.log.gz
+/run/logs/2024-06-06-2.log.gz
+/run/logs/2024-06-06-3.log.gz
+/run/logs/2024-06-06-4.log.gz
+/run/logs/2024-06-06-5.log.gz
+/run/saves/New World/advancements/5d6f5056-9d82-3950-9ee4-6a4e4ed3cf33.json
+/run/saves/New World/advancements/22fa5c62-1593-3376-ba15-517f68f16a46.json
+/run/saves/New World/advancements/25b11e49-a7c5-3d9c-8271-d4f68f211051.json
+/run/saves/New World/advancements/44e8d65a-a4b2-3c63-9ef0-950bb5685028.json
+/run/saves/New World/advancements/157dadc9-e980-331f-9b9a-60b0f155ef62.json
+/run/saves/New World/advancements/479b5936-9fd6-3f34-a6bd-40db6d59d9f4.json
+/run/saves/New World/advancements/25887e3a-1ce2-3acf-9352-3d844017a709.json
+/run/saves/New World/advancements/6405522b-9fbb-33c3-a135-56650c3b4d76.json
+/run/saves/New World/advancements/a288cb29-a681-33d0-bc05-44996f7b6ce1.json
+/run/saves/New World/advancements/bd5f3729-fa57-3746-815c-264ae5fac332.json
+/run/saves/New World/advancements/efc72414-2867-3716-86bc-fef5a53d913b.json
+/run/saves/New World/advancements/fc1768ff-17ae-39e8-bef2-f3e0d98306ba.json
+/run/saves/New World/playerdata/5d6f5056-9d82-3950-9ee4-6a4e4ed3cf33.dat
+/run/saves/New World/playerdata/5d6f5056-9d82-3950-9ee4-6a4e4ed3cf33.dat_old
+/run/saves/New World/playerdata/22fa5c62-1593-3376-ba15-517f68f16a46.dat
+/run/saves/New World/playerdata/22fa5c62-1593-3376-ba15-517f68f16a46.dat_old
+/run/saves/New World/playerdata/25b11e49-a7c5-3d9c-8271-d4f68f211051.dat
+/run/saves/New World/playerdata/25b11e49-a7c5-3d9c-8271-d4f68f211051.dat_old
+/run/saves/New World/playerdata/44e8d65a-a4b2-3c63-9ef0-950bb5685028.dat
+/run/saves/New World/playerdata/44e8d65a-a4b2-3c63-9ef0-950bb5685028.dat_old
+/run/saves/New World/playerdata/157dadc9-e980-331f-9b9a-60b0f155ef62.dat
+/run/saves/New World/playerdata/157dadc9-e980-331f-9b9a-60b0f155ef62.dat_old
+/run/saves/New World/playerdata/479b5936-9fd6-3f34-a6bd-40db6d59d9f4.dat
+/run/saves/New World/playerdata/479b5936-9fd6-3f34-a6bd-40db6d59d9f4.dat_old
+/run/saves/New World/playerdata/25887e3a-1ce2-3acf-9352-3d844017a709.dat
+/run/saves/New World/playerdata/25887e3a-1ce2-3acf-9352-3d844017a709.dat_old
+/run/saves/New World/playerdata/6405522b-9fbb-33c3-a135-56650c3b4d76.dat
+/run/saves/New World/playerdata/6405522b-9fbb-33c3-a135-56650c3b4d76.dat_old
+/run/saves/New World/playerdata/a288cb29-a681-33d0-bc05-44996f7b6ce1.dat
+/run/saves/New World/playerdata/a288cb29-a681-33d0-bc05-44996f7b6ce1.dat_old
+/run/saves/New World/playerdata/bd5f3729-fa57-3746-815c-264ae5fac332.dat
+/run/saves/New World/playerdata/bd5f3729-fa57-3746-815c-264ae5fac332.dat_old
+/run/saves/New World/playerdata/efc72414-2867-3716-86bc-fef5a53d913b.dat
+/run/saves/New World/playerdata/fc1768ff-17ae-39e8-bef2-f3e0d98306ba.dat
+/run/saves/New World/stats/5d6f5056-9d82-3950-9ee4-6a4e4ed3cf33.json
+/run/saves/New World/stats/22fa5c62-1593-3376-ba15-517f68f16a46.json
+/run/saves/New World/stats/25b11e49-a7c5-3d9c-8271-d4f68f211051.json
+/run/saves/New World/stats/44e8d65a-a4b2-3c63-9ef0-950bb5685028.json
+/run/saves/New World/stats/157dadc9-e980-331f-9b9a-60b0f155ef62.json
+/run/saves/New World/stats/479b5936-9fd6-3f34-a6bd-40db6d59d9f4.json
+/run/saves/New World/stats/25887e3a-1ce2-3acf-9352-3d844017a709.json
+/run/saves/New World/stats/6405522b-9fbb-33c3-a135-56650c3b4d76.json
+/run/saves/New World/stats/a288cb29-a681-33d0-bc05-44996f7b6ce1.json
+/run/saves/New World/stats/bd5f3729-fa57-3746-815c-264ae5fac332.json
+/run/saves/New World/stats/efc72414-2867-3716-86bc-fef5a53d913b.json
+/run/saves/New World/stats/fc1768ff-17ae-39e8-bef2-f3e0d98306ba.json
+/run/saves/New World (1)/advancements/7c860150-b37d-33df-82cf-c73f863934ed.json
+/run/saves/New World (1)/advancements/34692304-57b2-31f8-a84c-d22c6ff753f7.json
+/run/saves/New World (1)/advancements/a3e619b4-d03e-3df6-bc8e-533c5d67e6da.json
+/run/saves/New World (1)/advancements/bd5f3729-fa57-3746-815c-264ae5fac332.json
+/run/saves/New World (1)/data/fabricRegistry.dat
+/run/saves/New World (1)/data/fabricRegistry.dat.1
+/run/saves/New World (1)/data/fabricRegistry.dat.2
+/run/saves/New World (1)/data/raids.dat
+/run/saves/New World (1)/DIM1/data/raids_end.dat
+/run/saves/New World (1)/DIM-1/data/raids.dat
+/run/saves/New World (1)/entities/r.0.0.mca
+/run/saves/New World (1)/entities/r.0.-1.mca
+/run/saves/New World (1)/entities/r.-1.0.mca
+/run/saves/New World (1)/entities/r.-1.-1.mca
+/run/saves/New World (1)/playerdata/7c860150-b37d-33df-82cf-c73f863934ed.dat
+/run/saves/New World (1)/playerdata/7c860150-b37d-33df-82cf-c73f863934ed.dat_old
+/run/saves/New World (1)/playerdata/34692304-57b2-31f8-a84c-d22c6ff753f7.dat
+/run/saves/New World (1)/playerdata/34692304-57b2-31f8-a84c-d22c6ff753f7.dat_old
+/run/saves/New World (1)/playerdata/a3e619b4-d03e-3df6-bc8e-533c5d67e6da.dat
+/run/saves/New World (1)/playerdata/a3e619b4-d03e-3df6-bc8e-533c5d67e6da.dat_old
+/run/saves/New World (1)/playerdata/bd5f3729-fa57-3746-815c-264ae5fac332.dat
+/run/saves/New World (1)/poi/r.0.0.mca
+/run/saves/New World (1)/poi/r.0.-1.mca
+/run/saves/New World (1)/poi/r.-1.0.mca
+/run/saves/New World (1)/poi/r.-1.-1.mca
+/run/saves/New World (1)/region/r.0.0.mca
+/run/saves/New World (1)/region/r.0.-1.mca
+/run/saves/New World (1)/region/r.-1.0.mca
+/run/saves/New World (1)/region/r.-1.-1.mca
+/run/saves/New World (1)/stats/7c860150-b37d-33df-82cf-c73f863934ed.json
+/run/saves/New World (1)/stats/34692304-57b2-31f8-a84c-d22c6ff753f7.json
+/run/saves/New World (1)/stats/a3e619b4-d03e-3df6-bc8e-533c5d67e6da.json
+/run/saves/New World (1)/stats/bd5f3729-fa57-3746-815c-264ae5fac332.json
+/run/saves/New World (1)/level.dat
+/run/saves/New World (1)/level.dat_old
+/run/saves/New World (1)/session.lock

@@ -1,33 +1,33 @@
 {
-    "type": "minecraft:crafting_shaped",
-    "pattern": [
-        "#N#",
-        "QSQ",
-        "LCL"
-    ],
-    "key": {
-        "#": {
-            "item": "quilted_arrow:woven_leather_padding"
-        },
-        "N": {
-            "item": "minecraft:nether_star"
-        },
-        "Q": {
-            "item": "quilted_arrow:ribcage"
-        },
-        "S": {
-            "item": "quilted_arrow:spine"
-        },
-        "L": {
-            "item": "quilted_arrow:woven_leather_patch"
-        },
-        "C": {
-            "item": "quilted_arrow:bone_belt"
-        }
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#N#",
+    "QSQ",
+    "LCL"
+  ],
+  "key": {
+    "#": {
+      "item": "quilted_arrow:woven_leather_padding"
     },
-    "result": {
-        "item": "quilted_arrow:skeleton_chestplate",
-        "count": 1
+    "N": {
+      "item": "minecraft:nether_star"
     },
-    "group": "skeleton_set_component"
+    "Q": {
+      "item": "quilted_arrow:ribcage"
+    },
+    "S": {
+      "item": "quilted_arrow:spine"
+    },
+    "L": {
+      "item": "quilted_arrow:woven_leather_patch"
+    },
+    "C": {
+      "item": "quilted_arrow:bone_belt"
+    }
+  },
+  "result": {
+    "item": "quilted_arrow:skeleton_chestplate",
+    "count": 1
+  },
+  "group": "skeleton_set_component"
 }

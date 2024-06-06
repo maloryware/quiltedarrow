@@ -9,9 +9,8 @@ import net.minecraft.sound.SoundEvents;
 public class QArrowSkeletonSetMaterial implements ArmorMaterial {
 
 
-
-	private static final int[] DURABILITY = new int[]{3,7,3,3};
-	private static final int[] PROTECTION = new int[]{5,16,8,4};
+	private static final int[] DURABILITY = new int[]{3, 7, 3, 3};
+	private static final int[] PROTECTION = new int[]{5, 16, 8, 4};
 
 	@Override
 	public int getDurability(EquipmentSlot slot) {

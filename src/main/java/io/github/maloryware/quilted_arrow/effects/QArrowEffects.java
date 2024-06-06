@@ -9,13 +9,17 @@ import net.minecraft.util.registry.Registry;
 
 public class QArrowEffects {
 	public static StatusEffect STEALTH;
+	public static StatusEffect ENRAGED;
 
-	public static StatusEffect registerStatusEffect(String name) {
-		return Registry.register(Registry.STATUS_EFFECT, new Identifier(QuiltedArrow.ID, name),
-			new QArrowStealthEffect(StatusEffectType.BENEFICIAL, 0xa1337f));
+	public static StatusEffect registerStatusEffect(StatusEffect effect, String name) {
+		return
+			Registry.register(Registry.STATUS_EFFECT, new Identifier(QuiltedArrow.ID, name), effect);
 	}
 
 	public static void registerEffects() {
-		STEALTH = registerStatusEffect("stealth");
+		STEALTH = registerStatusEffect(new QArrowStealthEffect(
+			StatusEffectType.BENEFICIAL, 0x909090), "stealth");
+		ENRAGED = registerStatusEffect(new QArrowEnragedEffect(
+			StatusEffectType.NEUTRAL, 0xBC0307), "rage");
 	}
 }

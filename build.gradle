@@ -20,10 +20,46 @@ repositories {
 	// Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
 	// See https://docs.gradle.org/current/userguide/declaring_repositories.html
 	// for more information about repositories.
+
+	// GeckoLib
 	maven {
 		name = 'GeckoLib'
 		url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
 	}
+
+
+	/* Satin (CURRENTLY UNUSED)
+	maven {
+		name = 'Ladysnake Mods'
+		url = 'https://maven.ladysnake.org/releases'
+		content {
+			includeGroup 'io.github.ladysnake'
+			includeGroup 'org.ladysnake'
+			includeGroupByRegex 'dev\\.onyxstudios.*'
+		}
+	}
+	*/
+
+	// JEI stuff
+	maven {
+		// location of the maven that hosts JEI files before January 2023
+		name = "Progwml6's maven"
+		url = "https://dvs1.progwml6.com/files/maven/"
+	}
+	maven {
+		// location of the maven that hosts JEI files since January 2023
+		name = "Jared's maven"
+		url = "https://maven.blamejared.com/"
+	}
+	maven {
+		// location of a maven mirror for JEI files, as a fallback
+		name = "ModMaven"
+		url = "https://modmaven.dev"
+	}
+
+	// Cloth Config API
+	maven { url "https://maven.shedaniel.me/" }
+	maven { url "https://maven.terraformersmc.com/releases/" }
 }
 
 loom {
@@ -54,6 +90,19 @@ dependencies {
 	*/
 	modImplementation libs.quilt.loader
 	modImplementation 'software.bernie.geckolib:geckolib-quilt-1.19:3.1.41'
+	// modImplementation "org.ladysnake:satin:${satin_version}"
+
+	// compile against the JEI API but do not include it at runtime
+	modCompileOnlyApi("mezz.jei:jei-${mc_version}-common-api:${jei_version}")
+	modCompileOnlyApi("mezz.jei:jei-${mc_version}-fabric-api:${jei_version}")
+	// at runtime, use the full JEI jar for Fabric
+	modRuntimeOnly("mezz.jei:jei-${mc_version}-fabric:${jei_version}")
+
+	// Cloth Config API
+	modApi("me.shedaniel.cloth:cloth-config-fabric:8.3.115") {
+		exclude(group: "net.fabricmc.fabric-api")
+	}
+
 	// QSL is not a complete API; You will need Quilted Fabric API to fill in the gaps.
 	// Quilted Fabric API will automatically pull in the correct QSL version.
 	modImplementation libs.quilted.fabric.api
@@ -96,6 +145,10 @@ jar {
 }
 
 // Configure the maven publication
+
+/*
+
+
 publishing {
 	publications {
 		mavenJava(MavenPublication) {
@@ -111,3 +164,4 @@ publishing {
 		// retrieving dependencies.
 	}
 }
+ */

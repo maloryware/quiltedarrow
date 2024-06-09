@@ -1,9 +1,10 @@
-### CHANGELOG (01/JUN/2024):
+### CHANGELOG (09/JUN/2024):
 
 **MODPACK**
-- Fixed all the stupid shit going on
-- Probably fucked something up idk
+- Removed Way2Way due to incompatibility (sob...)
 
 **CORE**
-- Added &l"Stealth"&r effect (still uncoded lmfao)
-- But hey, at least it's in code! ...sorta
+- Programmed in 'Stealth' effect functionalities
+- Added 'Enraged' effect for when a mob is attacked by a 'Stealth'y player
+- Added JEI & Cloth Config maven repositories and dependencies
+- Added JEI folder

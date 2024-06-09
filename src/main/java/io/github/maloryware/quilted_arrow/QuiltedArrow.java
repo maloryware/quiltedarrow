@@ -4,6 +4,7 @@ import io.github.maloryware.quilted_arrow.effects.QArrowEffects;
 import io.github.maloryware.quilted_arrow.event.AttackEntityHandler;
 import io.github.maloryware.quilted_arrow.item.QArrowBlocks;
 import io.github.maloryware.quilted_arrow.item.QArrowItems;
+import io.github.maloryware.quilted_arrow.render.QArrowParticles;
 import net.fabricmc.fabric.api.event.player.AttackEntityCallback;
 import org.quiltmc.loader.api.ModContainer;
 import org.quiltmc.qsl.base.api.entrypoint.ModInitializer;
@@ -21,9 +22,12 @@ public class QuiltedArrow implements ModInitializer {
 		LOGGER.info("{} initialized.", mod.metadata().name());
 		// remember to initialize shit in the right order you fucking dingus
 
-		QArrowEffects.registerEffects();
 
 		GeckoLib.initialize();
+
+		QArrowEffects.registerEffects();
+		QArrowParticles.register(mod);
+
 		QArrowItems.register(mod);
 		QArrowBlocks.register(mod);
 		AttackEntityCallback.EVENT.register(new AttackEntityHandler());

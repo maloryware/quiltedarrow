@@ -6,7 +6,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.EntityHitResult;
@@ -23,8 +22,8 @@ public class AttackEntityHandler implements AttackEntityCallback {
 			&& !(entity instanceof PlayerEntity)){
 
 			((LivingEntity) entity).addStatusEffect(new StatusEffectInstance(QArrowEffects.ENRAGED, 600, 0));
-			player.sendSystemMessage(Text.of("You have enraged a mob."));
-			player.sendSystemMessage(Text.of("Mob enraged: "+ entity.getName()));
+			//player.sendSystemMessage(Text.of("You have enraged a mob."));
+			//player.sendSystemMessage(Text.of("Mob enraged: " + entity.getDisplayName()));
 		}
 		return ActionResult.PASS;
 	}

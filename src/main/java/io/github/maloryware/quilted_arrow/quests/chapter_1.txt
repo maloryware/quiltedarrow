@@ -1,0 +1,68 @@
+# 1 - Beginnings
+Task type: Checkmark
+
+*You wake up in an unfamiliar place. The fresh air fills your lungs. You're lying on the ground, staring at the sky. Suddenly, a voice from within calls to you.*
+
+## --- ??? ---
+**Hey. Hey kid, can you hear me? Don't worry, you're not going crazy. I'll explain to the best of my capabilities as soon as you're safe, but first, let's get you minimally prepared for the perils that surround you. **
+
+You feel yourself growing colder. As your survival instincts kick in, adrenaline starts taking over your body. You immediately get up from the floor, invigorated, ready to start your journey back home... wherever that may be.
+
+
+
+_____________________________________________________________________________________________________________________
+
+
+
+
+# 2 - Shelter Doesn't Just Fall From The Sky
+Task type: Find Structure (#minecraft:village)
+Task title: Find a place to rest
+
+*Despite the soft feeling of the wind against your face, you can't shake the feeling that someone's watching you.*
+
+## --- ??? ---
+**The perils of *Altroph* are many and ever-lurking, but there's some good souls out there too. **
+
+**See if you can find a Village nearby - the Townfolk will have no problem in taking you in.**
+
+**Don't get greedy though, keep your hands to yourself. In their town, you're a guest.**
+
+
+
+_____________________________________________________________________________________________________________________
+
+
+
+
+# 3 - A Breather For The Taking
+Task type: Sleep in a bed
+Task title: Get some rest
+
+*The cozy colors of this abode bring you some inner peace.*
+
+As you walk into the village, townsfolk quickly surround you to check on your wellbeing. Some offer you food, others offer you a place to stay. That mysterious voice was right, these people are really nice.
+
+## --- ??? ---
+** Alright, now that you've found yourself some shelter, take a seat. I'll do my best to explain the situation to you.**
+
+** Please try to stay calm, what I'm about to tell you may be of a little bit of shock, but if you go nuts then I can't help you.**
+
+[Next Page]
+
+## --- Zenith ---
+** My name is *Zenith*. I'm known by my peers as the *Guide of Altroph*. In case you haven't figured it out yet, Altroph is the name of this Realm.
+
+ ...and it seems like you've been taken here under unknown measures. You're not the first Lost Soul, and I'm afraid you won't be the last.
+
+ And no, don't worry, I'm not just a voice inside your head. I'm a spirit bound to this Realm, invisible to the eye of the living residents of Altroph, unable to communicate with them.
+
+ But you, as a Lost Soul, don't have the same ties to Altroph as do its natives. This means you can hear me. Which, in turn, means we can help each other.**
+
+[Next Page]
+
+## --- Zenith ---
+**Sorry, I don't mean to overwhelm you. Get some rest, regain your bearings. We'll talk tomorrow.**
+
+A faint whispering sound fades in and out, as the spirit slowly fades away. Your head feels heavy, and your memory cloudy.
+You decide to wander around for a bit, before heading to the bed one of the villagers prepared for you.

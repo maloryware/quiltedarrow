@@ -5,7 +5,7 @@
 - Removed Capes
 - Added Cosmetica *REQUIRES LOGIN THROUGH SETTINGS -> COSMETICA -> CUSTOMIZE*
 - Added Nullscape
-- Downgraded Traveler's Backpack to fix a crash
+- Downgraded Traveler's Backpack to 8.2.33 to fix a crash
 
 **CORE**
 - Added Spine and Ribcage final textures (Thank you matytoonist!)

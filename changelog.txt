@@ -1,10 +1,11 @@
-### CHANGELOG (09/JUN/2024):
+### CHANGELOG (10/JUN/2024):
 
 **MODPACK**
-- Removed Way2Way due to incompatibility (sob...)
+- Removed MoreCosmetics (No more paid features!)
+- Removed Capes
+- Added Cosmetica *REQUIRES LOGIN THROUGH SETTINGS -> COSMETICA -> CUSTOMIZE*
+- Added Nullscape
+- Downgraded Traveler's Backpack to fix a crash
 
 **CORE**
-- Programmed in 'Stealth' effect functionalities
-- Added 'Enraged' effect for when a mob is attacked by a 'Stealth'y player
-- Added JEI & Cloth Config maven repositories and dependencies
-- Added JEI folder
+- Added Spine and Ribcage final textures (Thank you matytoonist!)

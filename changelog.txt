@@ -1,11 +1,35 @@
 ### CHANGELOG (10/JUN/2024):
 
 **MODPACK**
-- Removed MoreCosmetics (No more paid features!)
-- Removed Capes
-- Added Cosmetica *REQUIRES LOGIN THROUGH SETTINGS -> COSMETICA -> CUSTOMIZE*
-- Added Nullscape
-- Downgraded Traveler's Backpack to 8.2.33 to fix a crash
+
+Removed Cosmetica (...that was quick)
+Removed BetterEnd Anvil Repair
+Removed Danger Close
+Removed Boss Spawns
+
+Added Requiem (currently disabled until properly implemented)
+Added Lootr
+Added Bedspreads
+Added Traveler's Titles
+Added Cosmetic Nametag 
+Added Cosmetic Armor
+
+Downgraded FancyMenu to fix an issue with backgrounds not loading
+
+Added Fabrication, which replaces several mods, meaning:
+Removed No Night Vision Flashing
+Removed Clear Despawn
+Removed No Prior Work Penalty
+Removed All Arrows Infinity Fix
+Removed Enchantment Level Language Patch
+Removed Secure Crops
+Removed Sneak Through Berries
+Removed Sneak Tweak
+Removed Boat Item View Fabric
+Removed No Rocket Boosting
+Removed Infusion Table (needs enabling)
+Removed ImmediatelyFast
+
+Other mixed fixs I cba to list lol
 
 **CORE**
-- Added Spine and Ribcage final textures (Thank you matytoonist!)

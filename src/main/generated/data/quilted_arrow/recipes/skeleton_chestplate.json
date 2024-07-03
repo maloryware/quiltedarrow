@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "quilted_arrow:woven_leather_padding"
+    },
+    "C": {
+      "item": "quilted_arrow:skeleton_belt"
+    },
+    "L": {
+      "item": "quilted_arrow:woven_leather_patch"
+    },
+    "N": {
+      "item": "minecraft:nether_star"
+    },
+    "Q": {
+      "item": "quilted_arrow:skeleton_ribcage"
+    },
+    "S": {
+      "item": "quilted_arrow:skeleton_spine"
+    }
+  },
+  "pattern": [
+    "#N#",
+    "QSQ",
+    "LCL"
+  ],
+  "result": {
+    "item": "quilted_arrow:skeleton_chestplate"
+  },
+  "show_notification": true
+}

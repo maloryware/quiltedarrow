@@ -12,8 +12,8 @@
   "item.quilted_arrow.skeleton_leggings": "§8§oSkeleton Leg Straps",
   "item.quilted_arrow.skeleton_boots": "§8§oSkeleton Shin Guards",
 
-  "itemGroup.quilted_arrow.combat": "Quilted Arrow - Combat",
-  "itemGroup.quilted_arrow.core": "Quilted Arrow",
+  "itemGroup.qarrowcombat": "Quilted Arrow - Combat",
+  "itemGroup.qarrowcore": "Quilted Arrow",
 
   "effect.quilted_arrow.stealth": "Stealth",
   "effect.quilted_arrow.rage": "Enraged"

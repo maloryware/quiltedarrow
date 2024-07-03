@@ -1,7 +1,7 @@
 Mozilla Public License Version 2.0
 ==================================
 
-Copyright (c) 2024 Mal
+Copyright (c) 2024 maloryware
 
 1. Definitions
 --------------

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "quilted_arrow:woven_leather_strip"
+    },
+    "B": {
+      "item": "minecraft:bone"
+    }
+  },
+  "pattern": [
+    "# #",
+    "# #",
+    "BBB"
+  ],
+  "result": {
+    "item": "quilted_arrow:skeleton_belt"
+  },
+  "show_notification": true
+}

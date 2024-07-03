@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "quilted_arrow:item/skeleton_helmet"
+  }
+}

@@ -24,10 +24,12 @@ public class QuiltedArrow implements ModInitializer {
 
         LOGGER.info("Hello Quilt world from {}! Stay fresh!", mod.metadata().name());
 
+		// ORDER IDIOT, THE FUCKING ORDER IN WHICH YOU REGISTER THOSE FUCKING ENTRYPOINTS NMATTERS GRAAHAZ<HHA0HAHAHHAHAHBAHB
 
+		QArrowEffects.register();
 		QArrowItems.register();
 		QArrowItemTabs.register();
-		QArrowEffects.register();
+
 		QArrowBlocks.register();
 
     }

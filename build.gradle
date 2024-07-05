@@ -28,6 +28,8 @@ repositories {
 		}
 	}
 
+	// Cursemaven - for Waystones
+	maven { url "https://www.cursemaven.com" }
 
 	/* Satin (CURRENTLY UNUSED)
 	maven {
@@ -123,6 +125,13 @@ dependencies {
 	}
 	*/
 	modImplementation libs.quilt.loader
+
+
+
+	// Waystones Fabric
+	modImplementation "curse.maven:waystones-fabric-500087:5500753"
+	// Balm Fabric
+	modImplementation "curse.maven:balm-fabric-500525:5467592"
 
 
 	modImplementation("software.bernie.geckolib:geckolib-fabric-1.20.1:${geckolib_version}"){

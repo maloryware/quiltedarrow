@@ -10,9 +10,8 @@ import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.BlockItem;
 */
-import io.github.maloryware.quilted_arrow.item.custom.QArmorItem;
+import io.github.maloryware.quilted_arrow.item.custom.ArmorItem;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
-import net.minecraft.item.ArmorItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
 import net.minecraft.registry.Registries;
@@ -41,29 +40,29 @@ public class QArrowItems {
 
 
 	public static final Item SKELETON_HELMET = registerItem(
-		"skeleton_helmet", new QArmorItem(
-			QArmorMaterials.BONE,
-			ArmorItem.ArmorSlot.HELMET,
+		"skeleton_helmet", new ArmorItem(
+			ArmorMaterials.BONE,
+			net.minecraft.item.ArmorItem.ArmorSlot.HELMET,
 			new QuiltItemSettings()));
 
 	public static final Item SKELETON_CHESTPLATE = registerItem(
-		"skeleton_chestplate", new QArmorItem(
-			QArmorMaterials.BONE,
-			ArmorItem.ArmorSlot.CHESTPLATE,
+		"skeleton_chestplate", new ArmorItem(
+			ArmorMaterials.BONE,
+			net.minecraft.item.ArmorItem.ArmorSlot.CHESTPLATE,
 			new QuiltItemSettings()));
 
 
 	public static final Item SKELETON_LEGGINGS = registerItem(
-		"skeleton_leggings", new QArmorItem(
-			QArmorMaterials.BONE,
-			ArmorItem.ArmorSlot.LEGGINGS,
+		"skeleton_leggings", new ArmorItem(
+			ArmorMaterials.BONE,
+			net.minecraft.item.ArmorItem.ArmorSlot.LEGGINGS,
 			new QuiltItemSettings()));
 
 
 	public static final Item SKELETON_BOOTS = registerItem(
-		"skeleton_boots", new QArmorItem(
-			QArmorMaterials.BONE,
-			ArmorItem.ArmorSlot.BOOTS,
+		"skeleton_boots", new ArmorItem(
+			ArmorMaterials.BONE,
+			net.minecraft.item.ArmorItem.ArmorSlot.BOOTS,
 			new QuiltItemSettings()));
 
 
@@ -79,8 +78,8 @@ public class QArrowItems {
 		QuiltedArrow.LOGGER.info("Registering Quilted Arrow items...");
 
 
-		ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(QRegisterHelpers::addToIngredients);
-		ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT).register(QRegisterHelpers::addToCombat);
+		ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(RegisterHelpers::addToIngredients);
+		ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT).register(RegisterHelpers::addToCombat);
 		// ItemGroupEvents.modifyEntriesEvent(ItemGroups.REDSTONE_BLOCKS).register(QArrowItemRegisterHelpers::addToRedstone);
 
 	}

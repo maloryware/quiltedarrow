@@ -4,12 +4,13 @@
   "package": "io.github.maloryware.quilted_arrow.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "QArrowMixin",
-    "QLivingEntityCanTargetMixin",
-    "QRespawnMixin"
+    "DoImmediateRespawnMixin",
+    "LivingEntityCanTargetMixin",
+    "PlayerEntityMixin",
+    "QArrowMixin"
   ],
   "client": [
-    "QTitleScreenMixin"
+    "TitleScreenMixin"
   ],
   "injectors": {
     "defaultRequire": 1

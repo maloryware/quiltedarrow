@@ -6,7 +6,7 @@
   "mixins": [
     "DoImmediateRespawnMixin",
     "LivingEntityCanTargetMixin",
-    "PlayerEntityMixinTest1",
+    "ServerPlayerEntityMixin",
     "QArrowMixin"
   ],
   "client": [

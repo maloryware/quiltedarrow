@@ -3,8 +3,7 @@ package io.github.maloryware.quilted_arrow.effects;
 import io.github.maloryware.quilted_arrow.QuiltedArrow;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectType;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
+import net.minecraft.util.registry.*;
 import net.minecraft.util.Identifier;
 
 
@@ -14,7 +13,7 @@ public class QArrowEffects {
 
 	public static StatusEffect registerStatusEffect(StatusEffect effect, String name) {
 		return
-			Registry.register(Registries.STATUS_EFFECT, new Identifier(QuiltedArrow.ID, name), effect);
+			Registry.register(Registry.STATUS_EFFECT, new Identifier(QuiltedArrow.ID, name), effect);
 	}
 
 	public static void register() {

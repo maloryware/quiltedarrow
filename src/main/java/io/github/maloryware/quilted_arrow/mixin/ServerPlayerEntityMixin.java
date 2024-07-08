@@ -1,6 +1,7 @@
 package io.github.maloryware.quilted_arrow.mixin;
 
 import com.mojang.authlib.GameProfile;
+import io.github.maloryware.quilted_arrow.QuiltedArrow;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.util.math.BlockPos;
@@ -24,25 +25,33 @@ public abstract class ServerPlayerEntityMixin extends PlayerEntity {
 
 
 	private ServerPlayerEntityMixin(World world, BlockPos pos, float yaw, GameProfile gameProfile) {
-		super(null, null, null, null);
+		super(world, pos, yaw, gameProfile);
 		throw new IllegalStateException("what the fuck dude you're not supposed to call this wth......");
 	}
 
 	@Overwrite
 	public @Nullable BlockPos getSpawnPointPosition() {
+		QuiltedArrow.LOGGER.info("Spawnpoint position set to {}", this.getLastDeathPos().toString());
 		return this.getBlockPos();
 	}
 
 	@Overwrite
 	public float getSpawnAngle() {
-		return this.lookDirection;
+		QuiltedArrow.LOGGER.info("Spawn angle set to {}", this.getYaw());
+		return this.getYaw();
+
 	}
 
 	@Overwrite
 	public RegistryKey<World> getSpawnPointDimension() {
+		QuiltedArrow.LOGGER.info("Spawnpoint dimension set to {}", this.getWorld().getRegistryKey().toString());
 		return getWorld().getRegistryKey();
 	}
 
+	@Overwrite
+	public boolean isSpawnPointSet() {
+		return true;
+	}
 }
 
 

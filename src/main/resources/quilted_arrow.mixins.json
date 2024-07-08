@@ -6,8 +6,9 @@
   "mixins": [
     "DoImmediateRespawnMixin",
     "LivingEntityCanTargetMixin",
-    "ServerPlayerEntityMixin",
-    "QArrowMixin"
+    "PlayerEntityMixin",
+    "QArrowMixin",
+    "ServerPlayerEntityMixin"
   ],
   "client": [
     "TitleScreenMixin"

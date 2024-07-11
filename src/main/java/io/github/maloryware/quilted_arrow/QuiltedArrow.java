@@ -1,7 +1,7 @@
 package io.github.maloryware.quilted_arrow;
 
 import io.github.maloryware.quilted_arrow.block.QArrowBlocks;
-import io.github.maloryware.quilted_arrow.effects.QArrowEffects;
+import io.github.maloryware.quilted_arrow.effect.QArrowEffects;
 import io.github.maloryware.quilted_arrow.item.QArrowItemTabs;
 import io.github.maloryware.quilted_arrow.item.QArrowItems;
 import org.quiltmc.loader.api.ModContainer;

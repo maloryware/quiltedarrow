@@ -1,6 +1,6 @@
 package io.github.maloryware.quilted_arrow.event;
 
-import io.github.maloryware.quilted_arrow.effects.QArrowEffects;
+import io.github.maloryware.quilted_arrow.effect.QArrowEffects;
 import net.fabricmc.fabric.api.event.player.AttackEntityCallback;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;

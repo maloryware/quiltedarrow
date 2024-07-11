@@ -29,6 +29,10 @@ public abstract class ServerPlayerEntityMixin extends PlayerEntity {
 		throw new IllegalStateException("what the fuck dude you're not supposed to call this wth......");
 	}
 
+
+
+
+
 	@Overwrite
 	public @Nullable BlockPos getSpawnPointPosition() {
 		QuiltedArrow.LOGGER.info("Spawnpoint position set to {}", this.getLastDeathPos().toString());

@@ -2,7 +2,7 @@ package io.github.maloryware.quilted_arrow.mixin;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
-import io.github.maloryware.quilted_arrow.effects.QArrowEffects;
+import io.github.maloryware.quilted_arrow.effect.QArrowEffects;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
 import org.jetbrains.annotations.Nullable;

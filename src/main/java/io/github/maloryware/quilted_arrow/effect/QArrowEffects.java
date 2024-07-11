@@ -1,4 +1,4 @@
-package io.github.maloryware.quilted_arrow.effects;
+package io.github.maloryware.quilted_arrow.effect;
 
 import io.github.maloryware.quilted_arrow.QuiltedArrow;
 import net.minecraft.entity.effect.StatusEffect;

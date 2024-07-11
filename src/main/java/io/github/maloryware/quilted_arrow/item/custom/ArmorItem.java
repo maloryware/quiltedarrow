@@ -1,7 +1,7 @@
 package io.github.maloryware.quilted_arrow.item.custom;
 
 import com.google.common.collect.ImmutableMap;
-import io.github.maloryware.quilted_arrow.effects.QArrowEffects;
+import io.github.maloryware.quilted_arrow.effect.QArrowEffects;
 import io.github.maloryware.quilted_arrow.item.ArmorMaterials;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.entity.Entity;

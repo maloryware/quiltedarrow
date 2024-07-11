@@ -26,9 +26,6 @@ import java.util.Optional;
 public abstract class PlayerEntityMixin extends Entity {
 
 
-	@Shadow
-	public abstract int getEnchantmentTableSeed();
-
 	public PlayerEntityMixin(EntityType<?> variant, World world) {
 		super(variant, world);
 	}

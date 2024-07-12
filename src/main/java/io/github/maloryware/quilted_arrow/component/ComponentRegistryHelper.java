@@ -19,7 +19,17 @@ public class ComponentRegistryHelper implements EntityComponentInitializer {
 
 	}
 
-	public static void manageRespawning(Entity provider){
-		boolean isRespawing = RESPAWN.get(provider).get();
+	public static boolean getRespawnPhase(Entity provider){
+		return RESPAWN.get(provider).getBoolKey();
+	}
+
+	public static void endRespawnPhase(Entity provider){
+		RESPAWN.get(provider).setBoolKey(false);
+	}
+	public static void startRespawnPhase(Entity provider){
+		RESPAWN.get(provider).setBoolKey(true);
 	}
 }
+
+
+

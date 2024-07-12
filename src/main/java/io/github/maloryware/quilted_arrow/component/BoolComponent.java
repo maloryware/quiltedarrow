@@ -4,7 +4,7 @@ import dev.onyxstudios.cca.api.v3.component.Component;
 
 public interface BoolComponent extends Component {
 
-	void set(boolean bool);
-	boolean get();
+	void setBoolKey(boolean bool);
+	boolean getBoolKey();
 
 }

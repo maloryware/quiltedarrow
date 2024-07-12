@@ -12,6 +12,8 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+import static io.github.maloryware.quilted_arrow.component.ComponentRegistryHelper.startRespawnPhase;
+
 @Mixin(PlayerManager.class)
 public abstract class PlayerManagerMixin {
 
@@ -26,6 +28,7 @@ public abstract class PlayerManagerMixin {
 		Vec3d start = player.getPos();
 		player.changeGameMode(GameMode.SPECTATOR);
 		player.noClip = true;
+		startRespawnPhase(player); // something something write to the nbt tag
 	}
 
 }

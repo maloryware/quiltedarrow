@@ -30,9 +30,6 @@ public abstract class ServerPlayerEntityMixin extends PlayerEntity {
 	}
 
 
-
-
-
 	@Overwrite
 	public @Nullable BlockPos getSpawnPointPosition() {
 		QuiltedArrow.LOGGER.info("Spawnpoint position set to {}", this.getLastDeathPos().toString());

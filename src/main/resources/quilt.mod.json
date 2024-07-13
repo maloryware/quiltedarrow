@@ -20,7 +20,9 @@
             "init": "io.github.maloryware.quilted_arrow.QuiltedArrow",
 						"client_init": "io.github.maloryware.quilted_arrow.QuiltedArrowClient",
 						"fabric-datagen": "io.github.maloryware.quilted_arrow.QuiltedArrowDatagen",
-						"cardinal-components":"io.github.maloryware.quilted_arrow.component.ComponentRegistryHelper"
+						"cardinal-components":[
+							"io.github.maloryware.quilted_arrow.component.ComponentRegistryHelper"
+						]
 				},
         "depends": [
             {
@@ -37,6 +39,6 @@
             }
         ]
     },
-		"cardinal-components": "quilted_arrow:respawncomponent",
+		"cardinal-components": ["quilted_arrow:respawncomponent"],
     "mixin": "quilted_arrow.mixins.json"
 }

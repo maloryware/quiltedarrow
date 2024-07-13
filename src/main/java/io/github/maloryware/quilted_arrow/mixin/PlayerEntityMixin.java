@@ -5,9 +5,12 @@ import net.blay09.mods.waystones.core.PlayerWaystoneManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.math.Vec3i;
+import net.minecraft.world.GameMode;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Debug;
 import org.spongepowered.asm.mixin.Mixin;
@@ -15,7 +18,6 @@ import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-
 import java.util.Optional;
 
 import static io.github.maloryware.quilted_arrow.component.ComponentRegistryHelper.endRespawnPhase;
@@ -41,17 +43,33 @@ public abstract class PlayerEntityMixin extends Entity {
 		)
 	)
 	public void doRespawnProcedure(CallbackInfo ci){
-		if(getRespawnPhase((PlayerEntity)(Object)this)){ //something something check player for ccapi component
-			this.setVelocity(Vec3d.of(PlayerWaystoneManager.getNearestWaystone((PlayerEntity)(Object)this).getPos()));
-			this.velocityDirty = true;
-			QuiltedArrow.LOGGER.info("Moving toward location...");
+
+		PlayerEntity player = (PlayerEntity)(Object)this;
+
+
+
+		if(getRespawnPhase(player)){ //something something check player for ccapi component
+			player.lookAt(player.getCommandSource().getEntityAnchor(), Vec3d.ofCenter(PlayerWaystoneManager.getNearestWaystone(player).getPos()));
+
+			player.setVelocity(Vec3d.of((PlayerWaystoneManager.getNearestWaystone(player).getPos())).subtract(player.getPos()));
+			player.velocityDirty = true;
+			QuiltedArrow.LOGGER.info("Moving toward location... Velocity: {}", player.getVelocity());
 		}
-		if(this.getBlockPos() == PlayerWaystoneManager.getNearestWaystone((PlayerEntity) (Object)this).getPos()
-		|| this.getBlockPos().getX() <= PlayerWaystoneManager.getNearestWaystone((PlayerEntity) (Object)this).getPos().getX() - 1
-		|| this.getBlockPos().getY() <= PlayerWaystoneManager.getNearestWaystone((PlayerEntity) (Object)this).getPos().getY() - 1
-		|| this.getBlockPos().getZ() <= PlayerWaystoneManager.getNearestWaystone((PlayerEntity) (Object)this).getPos().getZ() - 1){
-			QuiltedArrow.LOGGER.info("Arrived at location.");
-			endRespawnPhase((PlayerEntity)(Object)this);
+		/*
+		if(player.getBlockPos() == PlayerWaystoneManager.getNearestWaystone(player).getPos()
+		|| player.getBlockPos().getX() <= PlayerWaystoneManager.getNearestWaystone(player).getPos().getX() - 1
+		|| player.getBlockPos().getY() <= PlayerWaystoneManager.getNearestWaystone(player).getPos().getY() - 1
+		|| player.getBlockPos().getZ() <= PlayerWaystoneManager.getNearestWaystone(player).getPos().getZ() - 1){
+
+		 */
+		if(Vec3d.ofCenter(PlayerWaystoneManager.getNearestWaystone(player).getPos()).isInRange(player.getPos(), 3)
+			&& getRespawnPhase(player)
+			&& player instanceof ServerPlayerEntity serverPlayerEntity){
+
+				QuiltedArrow.LOGGER.info("Arrived at location.");
+				endRespawnPhase(player);
+				final boolean changed = serverPlayerEntity.changeGameMode(GameMode.SURVIVAL);
+				QuiltedArrow.LOGGER.info("Setting gamemode to survival: {} ", changed);
 
 		}
 	}

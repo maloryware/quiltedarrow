@@ -1,13 +1,21 @@
 package io.github.maloryware.quilted_arrow.mixin;
 
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.mojang.authlib.GameProfile;
 import io.github.maloryware.quilted_arrow.QuiltedArrow;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.registry.RegistryKey;
+import net.minecraft.server.network.ServerPlayerInteractionManager;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.GameMode;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.*;
+import org.spongepowered.asm.mixin.injection.At;
+
+import static io.github.maloryware.quilted_arrow.component.ComponentRegistryHelper.getRespawnPhase;
+import static io.github.maloryware.quilted_arrow.component.ComponentRegistryHelper.startRespawnPhase;
 
 /*
  * This mixin is based off of
@@ -24,15 +32,16 @@ import org.spongepowered.asm.mixin.*;
 public abstract class ServerPlayerEntityMixin extends PlayerEntity {
 
 
+
 	private ServerPlayerEntityMixin(World world, BlockPos pos, float yaw, GameProfile gameProfile) {
 		super(world, pos, yaw, gameProfile);
 		throw new IllegalStateException("what the fuck dude you're not supposed to call this wth......");
 	}
 
-
 	@Overwrite
 	public @Nullable BlockPos getSpawnPointPosition() {
 		QuiltedArrow.LOGGER.info("Spawnpoint position set to {}", this.getLastDeathPos().toString());
+		startRespawnPhase(this);
 		return this.getBlockPos();
 	}
 

@@ -20,7 +20,7 @@ public abstract class PlayerManagerMixin {
 	)
 
 	private void spectateRespawn(ServerPlayerEntity player, boolean alive, CallbackInfoReturnable<ServerPlayerEntity> cir) {
-		startRespawnPhase(player); // something something write to the nbt tag
+		startRespawnPhase(player); // write to the nbt tag
 		final boolean changed = player.changeGameMode(GameMode.SURVIVAL);
 		QuiltedArrow.LOGGER.info("Setting gamemode to survival: {} ", changed);
 	}

@@ -48,7 +48,7 @@ public abstract class PlayerEntityMixin extends Entity {
 
 
 
-		if(getRespawnPhase(player)){ //something something check player for ccapi component
+		if(getRespawnPhase(player)){ // read from the nbt tag
 			player.lookAt(player.getCommandSource().getEntityAnchor(), Vec3d.ofCenter(PlayerWaystoneManager.getNearestWaystone(player).getPos()));
 
 			player.setVelocity(Vec3d.of((PlayerWaystoneManager.getNearestWaystone(player).getPos())).subtract(player.getPos()));

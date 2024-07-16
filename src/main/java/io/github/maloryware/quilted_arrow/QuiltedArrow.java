@@ -2,6 +2,7 @@ package io.github.maloryware.quilted_arrow;
 
 import io.github.maloryware.quilted_arrow.block.QArrowBlocks;
 import io.github.maloryware.quilted_arrow.effect.QArrowEffects;
+import io.github.maloryware.quilted_arrow.event.QArrowEvents;
 import io.github.maloryware.quilted_arrow.item.QArrowItemTabs;
 import io.github.maloryware.quilted_arrow.item.QArrowItems;
 import org.quiltmc.loader.api.ModContainer;
@@ -22,7 +23,7 @@ public class QuiltedArrow implements ModInitializer {
 
 		GeckoLib.initialize();
 
-        LOGGER.info("Hello Quilt world from {}! Stay fresh!", mod.metadata().name());
+        LOGGER.info("hi chat :3c ummm this is ur logger speaking; say hello to quilted arrow chat :333");
 
 		// ORDER IDIOT, THE FUCKING ORDER IN WHICH YOU REGISTER THOSE FUCKING ENTRYPOINTS NMATTERS GRAAHAZ<HHA0HAHAHHAHAHBAHB
 
@@ -31,6 +32,8 @@ public class QuiltedArrow implements ModInitializer {
 		QArrowItemTabs.register();
 
 		QArrowBlocks.register();
+
+		QArrowEvents.register();
 
     }
 }

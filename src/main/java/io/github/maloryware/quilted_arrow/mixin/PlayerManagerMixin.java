@@ -1,9 +1,7 @@
 package io.github.maloryware.quilted_arrow.mixin;
 
-import io.github.maloryware.quilted_arrow.QuiltedArrow;
 import net.minecraft.server.PlayerManager;
 import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.world.GameMode;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -21,8 +19,7 @@ public abstract class PlayerManagerMixin {
 
 	private void spectateRespawn(ServerPlayerEntity player, boolean alive, CallbackInfoReturnable<ServerPlayerEntity> cir) {
 		startRespawnPhase(player); // write to the nbt tag
-		final boolean changed = player.changeGameMode(GameMode.SURVIVAL);
-		QuiltedArrow.LOGGER.info("Setting gamemode to survival: {} ", changed);
+
 	}
 
 

@@ -41,8 +41,9 @@ public abstract class PlayerEntityMixin extends Entity {
 	@Inject(
 		method = "tick",
 		at = @At(
+			shift = At.Shift.AFTER,
 			value = "INVOKE",
-			target = "Lnet/minecraft/entity/player/PlayerEntity;updateWaterSubmersionState()Z"
+			target = "Lnet/minecraft/entity/player/PlayerEntity;isSpectator()Z"
 		)
 	)
 	public void doRespawnProcedure(CallbackInfo ci) {
@@ -54,13 +55,12 @@ public abstract class PlayerEntityMixin extends Entity {
 
 				@Nullable Vec3d nearestWaystoneVec = Vec3d.ofCenter(PlayerWaystoneManager.getNearestWaystone(player).getPos());
 				@Nullable BlockPos nearestWaystone = PlayerWaystoneManager.getNearestWaystone(player).getPos();
-			if (getRespawnPhase(player)
-				&& player instanceof ServerPlayerEntity serverPlayerEntity) { // read from the nbt tag
+			if (getRespawnPhase(player)) { // read from the nbt tag
 
 				player.lookAt(player.getCommandSource().getEntityAnchor(), deathpos);
 				/* serverPlayerEntity.addVelocity(nearestWaystoneVec.subtract(serverPlayerEntity.getPos()));*/
 
-				player.move(MovementType.PLAYER, nearestWaystoneVec.subtract(serverPlayerEntity.getPos()));
+				player.move(MovementType.PLAYER, nearestWaystoneVec.subtract(player.getPos()));
 				QuiltedArrow.LOGGER.info("Moving toward location... Velocity: {}", player.getVelocity());
 
 			}
@@ -78,9 +78,11 @@ public abstract class PlayerEntityMixin extends Entity {
 			}
 		}
 		catch(NullPointerException e){
-			endRespawnPhase(player);
-			QuiltedArrow.LOGGER.info("Exception caught: {}", e.toString());
-			player.sendSystemMessage(Text.of("No waystone found."));
+			if(getRespawnPhase(player)) {
+				endRespawnPhase(player);
+				QuiltedArrow.LOGGER.info("Exception caught: {}", e.toString());
+				player.sendSystemMessage(Text.of("No waystone found."));
+			}
 		}
 	}
 

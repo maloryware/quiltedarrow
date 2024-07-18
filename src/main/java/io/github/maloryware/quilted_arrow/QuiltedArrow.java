@@ -15,7 +15,7 @@ public class QuiltedArrow implements ModInitializer {
 
 	public static final Logger LOGGER = LoggerFactory.getLogger("Quilted Arrow Core Components");
 
-	public static String ID = "quilted_arrow";
+	public static final String ID = "quilted_arrow";
 
 	@Override
     public void onInitialize(ModContainer mod) {

@@ -10,22 +10,24 @@ import io.github.maloryware.quilted_arrow.component.RespawnPhaseComponent.Respaw
 import net.minecraft.entity.Entity;
 import net.minecraft.util.Identifier;
 
+import java.util.Optional;
+
 public class ComponentRegistryHelper implements EntityComponentInitializer {
 	public static final ComponentKey<RespawnPhaseComponent> RESPAWN =
 		ComponentRegistry.getOrCreate(new Identifier(QuiltedArrow.ID, "respawncomponent"), RespawnPhaseComponent.class);
-
+	//comment
 	@Override
 	public void registerEntityComponentFactories(EntityComponentFactoryRegistry registry) {
 		registry.registerForPlayers(RESPAWN, player -> new RespawnPhaseComponent(), RespawnCopyStrategy.ALWAYS_COPY);
 
 	}
 
-	public static RespawnPhase getRespawnPhase(Entity provider){
-        return null;
+	public static Optional<RespawnPhase> getRespawnPhase(Entity provider){
+        return RESPAWN.get(provider).getRespawnPhase();
     }
 
 	public static void endRespawnPhase(Entity provider){
-
+		RESPAWN.get(provider).closePhase(provider);
 	}
 	public static void startRespawnPhase(Entity provider){
 		RESPAWN.get(provider).generateRespawnPhaseObject(provider);

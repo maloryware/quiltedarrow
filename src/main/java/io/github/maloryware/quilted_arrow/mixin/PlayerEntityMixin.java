@@ -1,7 +1,6 @@
 package io.github.maloryware.quilted_arrow.mixin;
 
 import io.github.maloryware.quilted_arrow.QuiltedArrow;
-import net.blay09.mods.waystones.core.PlayerWaystoneManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.MovementType;
@@ -23,8 +22,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.Optional;
 
-import static io.github.maloryware.quilted_arrow.component.ComponentRegistryHelper.endRespawnPhase;
-import static io.github.maloryware.quilted_arrow.component.ComponentRegistryHelper.getRespawnPhase;
+import static io.github.maloryware.quilted_arrow.component.ComponentRegistryHelper.*;
 
 @Debug(
 	export = true
@@ -49,25 +47,23 @@ public abstract class PlayerEntityMixin extends Entity {
 	public void doRespawnProcedure(CallbackInfo ci) {
 
 		PlayerEntity player = (PlayerEntity) (Object) this;
-		Vec3d deathpos = player.getPos();
+		@Nullable Vec3d deathPos = RESPAWN.get(player).getDeathPos(player);
+		@Nullable Vec3d nearestWaystone = RESPAWN.get(player).getNearestWaystone(player);
 
 		try {
 
-				@Nullable Vec3d nearestWaystoneVec = Vec3d.ofCenter(PlayerWaystoneManager.getNearestWaystone(player).getPos());
-				@Nullable BlockPos nearestWaystone = PlayerWaystoneManager.getNearestWaystone(player).getPos();
-			if (getRespawnPhase(player)) { // read from the nbt tag
+			if (getRespawnPhase(player).isPresent()) { // read from the nbt tag
 
-				player.lookAt(player.getCommandSource().getEntityAnchor(), deathpos);
-				/* serverPlayerEntity.addVelocity(nearestWaystoneVec.subtract(serverPlayerEntity.getPos()));*/
+				player.lookAt(player.getCommandSource().getEntityAnchor(), deathPos);
 
-				player.move(MovementType.PLAYER, nearestWaystoneVec.subtract(player.getPos()));
+				player.move(MovementType.PLAYER, nearestWaystone.subtract(player.getPos()));
 				QuiltedArrow.LOGGER.info("Moving toward location... Velocity: {}", player.getVelocity());
 
 			}
 
 
-			if (nearestWaystoneVec.isInRange(player.getPos(), 3)
-				&& getRespawnPhase(player)
+			if (nearestWaystone.isInRange(player.getPos(), 3)
+				&& getRespawnPhase(player).isPresent()
 				&& player instanceof ServerPlayerEntity serverPlayerEntity) {
 
 				QuiltedArrow.LOGGER.info("Arrived at location.");
@@ -77,14 +73,15 @@ public abstract class PlayerEntityMixin extends Entity {
 				QuiltedArrow.LOGGER.info("Setting gamemode to survival: {} ", changed);
 			}
 		}
-		catch(NullPointerException e){
-			if(getRespawnPhase(player)) {
+
+		catch(NullPointerException | ArrayIndexOutOfBoundsException e){//comment
+			if(getRespawnPhase(player).isPresent()) {
 				endRespawnPhase(player);
 				QuiltedArrow.LOGGER.info("Exception caught: {}", e.toString());
 				player.sendSystemMessage(Text.of("No waystone found."));
 			}
 		}
-	}
+    }
 
 	@Overwrite()
 	public static Optional<Vec3d> findRespawnPosition(ServerWorld world, BlockPos pos,

@@ -1,8 +1,8 @@
 package io.github.maloryware.quilted_arrow.event;
 
-import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.world.GameMode;
+import org.quiltmc.qsl.entity.event.api.ServerPlayerEntityCopyCallback;
 
 import static io.github.maloryware.quilted_arrow.component.ComponentRegistryHelper.startRespawnPhase;
 
@@ -15,15 +15,11 @@ public class QArrowEvents {
 			startRespawnPhase(player);
 		}
 	}
-
-	public static void getRespawnData(){
-
-	}
-
+//comment
 
 	public static void register() {
 
-		ServerPlayerEvents.AFTER_RESPAWN.register(QArrowEvents::changeToSpectator);
+		ServerPlayerEntityCopyCallback.EVENT.register(QArrowEvents::changeToSpectator);
 
 
 	}

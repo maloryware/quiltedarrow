@@ -19,7 +19,7 @@ public abstract class PlayerManagerMixin {
 
 	private void spectateRespawn(ServerPlayerEntity player, boolean alive, CallbackInfoReturnable<ServerPlayerEntity> cir) {
 		startRespawnPhase(player); // write to the nbt tag
-
+//comment
 	}
 
 

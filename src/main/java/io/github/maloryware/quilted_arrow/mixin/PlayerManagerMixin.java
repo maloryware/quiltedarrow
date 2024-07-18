@@ -14,7 +14,7 @@ public abstract class PlayerManagerMixin {
 
 	@Inject(
 		method = "respawnPlayer",
-		at = @At(value = "INVOKE", target = "Lnet/minecraft/server/world/ServerWorld;onPlayerRespawned(Lnet/minecraft/server/network/ServerPlayerEntity;)V")
+		at = @At(value = "INVOKE", target =  "Lnet/minecraft/server/world/ServerWorld;onPlayerRespawned(Lnet/minecraft/server/network/ServerPlayerEntity;)V")
 	)
 
 	private void spectateRespawn(ServerPlayerEntity player, boolean alive, CallbackInfoReturnable<ServerPlayerEntity> cir) {

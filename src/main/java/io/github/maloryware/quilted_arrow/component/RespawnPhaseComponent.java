@@ -2,6 +2,7 @@ package io.github.maloryware.quilted_arrow.component;
 
 
 import dev.onyxstudios.cca.api.v3.component.Component;
+import dev.onyxstudios.cca.api.v3.component.sync.AutoSyncedComponent;
 import net.blay09.mods.waystones.core.PlayerWaystoneManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -11,7 +12,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
 
-public class RespawnPhaseComponent implements Component {
+public class RespawnPhaseComponent implements Component, AutoSyncedComponent {
 
 	private @Nullable RespawnPhase respawnPhase;
 	public Optional<RespawnPhase> getRespawnPhase() {

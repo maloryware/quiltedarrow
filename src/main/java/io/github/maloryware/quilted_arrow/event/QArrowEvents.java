@@ -15,7 +15,6 @@ public class QArrowEvents {
 			startRespawnPhase(player);
 		}
 	}
-//comment
 
 	public static void register() {
 

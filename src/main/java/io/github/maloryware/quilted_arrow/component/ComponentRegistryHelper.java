@@ -15,7 +15,7 @@ import java.util.Optional;
 public class ComponentRegistryHelper implements EntityComponentInitializer {
 	public static final ComponentKey<RespawnPhaseComponent> RESPAWN =
 		ComponentRegistry.getOrCreate(new Identifier(QuiltedArrow.ID, "respawncomponent"), RespawnPhaseComponent.class);
-	//comment
+
 	@Override
 	public void registerEntityComponentFactories(EntityComponentFactoryRegistry registry) {
 		registry.registerForPlayers(RESPAWN, player -> new RespawnPhaseComponent(), RespawnCopyStrategy.ALWAYS_COPY);

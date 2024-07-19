@@ -52,7 +52,7 @@ public abstract class PlayerEntityMixin extends Entity {
 
 		try {
 
-			if (getRespawnPhase(player).isPresent()) { // read from the nbt tag
+			if (getRespawnPhase(player).isPresent()) {
 
 				player.lookAt(player.getCommandSource().getEntityAnchor(), deathPos);
 
@@ -74,7 +74,7 @@ public abstract class PlayerEntityMixin extends Entity {
 			}
 		}
 
-		catch(NullPointerException | ArrayIndexOutOfBoundsException e){//comment
+		catch(NullPointerException | ArrayIndexOutOfBoundsException e){
 			if(getRespawnPhase(player).isPresent()) {
 				endRespawnPhase(player);
 				QuiltedArrow.LOGGER.info("Exception caught: {}", e.toString());

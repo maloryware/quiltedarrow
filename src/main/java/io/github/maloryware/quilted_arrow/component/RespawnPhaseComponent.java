@@ -7,10 +7,13 @@ import net.blay09.mods.waystones.core.PlayerWaystoneManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
+
+import static io.github.maloryware.quilted_arrow.component.ComponentRegistryHelper.RESPAWN;
 
 public class RespawnPhaseComponent implements Component, AutoSyncedComponent {
 
@@ -76,14 +79,14 @@ public class RespawnPhaseComponent implements Component, AutoSyncedComponent {
 
 	}
 
-	/*
+
 
 	// huh, unsure what to do here
 
 
 	public Vec3d getDeathPos(PlayerEntity provider){
 		return Vec3d.of(BlockPos.create(
-			RESPAWN.get(provider),
+			RESPAWN.get(provider).deathposX,
 			RESPAWN.get(provider).deathposY,
 			RESPAWN.get(provider).deathposZ
 			));
@@ -98,7 +101,7 @@ public class RespawnPhaseComponent implements Component, AutoSyncedComponent {
 	}
 
 
-	 */
+
 
 
 }

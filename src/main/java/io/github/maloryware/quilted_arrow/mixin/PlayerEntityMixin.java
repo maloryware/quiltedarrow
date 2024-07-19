@@ -8,6 +8,7 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.GameMode;
 import net.minecraft.world.World;
@@ -35,6 +36,13 @@ public abstract class PlayerEntityMixin extends Entity {
 		super(variant, world);
 	}
 
+	public double distanceBetween(Vec3d first, Vec3d second){
+		float f = (float) (first.getX() - second.getX());
+		float g = (float) (first.getY() - second.getY());
+		float h = (float) (first.getZ() - second.getZ());
+		return MathHelper.sqrt(f * f + g * g + h * h);
+
+	}
 	@Inject(
 		method = "tick",
 		at = @At(
@@ -54,12 +62,17 @@ public abstract class PlayerEntityMixin extends Entity {
 			if (getRespawnPhase(player).isPresent()) {
 
 
-				player.lookAt(player.getCommandSource().getEntityAnchor(), deathPos);
+				player.lookAt(player.getCommandSource().getEntityAnchor(), nearestWaystone);
 
-				player.setVelocity(nearestWaystone.subtract(player.getPos()));
-
-				player.velocityDirty = true;
-				player.velocityModified = true; // i think i need these two to make sure setVelocity() gets applied
+				if(distanceBetween(player.getPos(), nearestWaystone) < (distanceBetween(deathPos, nearestWaystone))/3){
+					// speed up
+				}
+				else if(distanceBetween(player.getPos(), nearestWaystone) > 2 * ((distanceBetween(deathPos, nearestWaystone))/3)){
+					// slow down
+				}
+				else {
+					// keep speed
+				}
 
 				QuiltedArrow.LOGGER.info("Moving toward location... Velocity: {}", player.getVelocity());
 

@@ -27,7 +27,7 @@ public class RespawnPhaseComponent implements Component, AutoSyncedComponent {
 	private int waystoneposZ;
 
 	public Optional<RespawnPhase> getRespawnPhase() {
-		return Optional.ofNullable(respawnPhase);
+		return Optional.ofNullable(this.respawnPhase);
 	}
 
 	// implementation...

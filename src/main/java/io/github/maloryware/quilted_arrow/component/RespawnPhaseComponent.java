@@ -36,7 +36,7 @@ public class RespawnPhaseComponent implements Component, AutoSyncedComponent {
 	}
 
 	public void generateRespawnPhaseObject(Entity provider){
-		this.respawnPhase = new RespawnPhase(provider.getPos(), (Vec3d) PlayerWaystoneManager.getNearestWaystone((PlayerEntity) provider));
+		this.respawnPhase = new RespawnPhase(provider.getPos(), Vec3d.of(PlayerWaystoneManager.getNearestWaystone((PlayerEntity) provider).getPos()));
 
     }
 

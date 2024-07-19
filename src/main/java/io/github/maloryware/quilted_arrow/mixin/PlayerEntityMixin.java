@@ -3,7 +3,6 @@ package io.github.maloryware.quilted_arrow.mixin;
 import io.github.maloryware.quilted_arrow.QuiltedArrow;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.MovementType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
@@ -54,9 +53,14 @@ public abstract class PlayerEntityMixin extends Entity {
 
 			if (getRespawnPhase(player).isPresent()) {
 
+
 				player.lookAt(player.getCommandSource().getEntityAnchor(), deathPos);
 
-				player.move(MovementType.PLAYER, nearestWaystone.subtract(player.getPos()));
+				player.setVelocity(nearestWaystone.subtract(player.getPos()));
+
+				player.velocityDirty = true;
+				player.velocityModified = true; // i think i need these two to make sure setVelocity() gets applied
+
 				QuiltedArrow.LOGGER.info("Moving toward location... Velocity: {}", player.getVelocity());
 
 			}

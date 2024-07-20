@@ -38,12 +38,14 @@ public abstract class ServerPlayerEntityMixin extends PlayerEntity {
 		throw new IllegalStateException("what the fuck dude you're not supposed to call this wth......");
 	}
 
+
 	@Overwrite
 	public @Nullable BlockPos getSpawnPointPosition() {
 		QuiltedArrow.LOGGER.info("Spawnpoint position set to {}", this.getLastDeathPos().toString());
 		startRespawnPhase(this);
 		return this.getBlockPos();
 	}
+
 
 	@Overwrite
 	public float getSpawnAngle() {
@@ -52,11 +54,13 @@ public abstract class ServerPlayerEntityMixin extends PlayerEntity {
 
 	}
 
+
 	@Overwrite
 	public RegistryKey<World> getSpawnPointDimension() {
 		QuiltedArrow.LOGGER.info("Spawnpoint dimension set to {}", this.getWorld().getRegistryKey().toString());
 		return getWorld().getRegistryKey();
 	}
+
 
 	@Overwrite
 	public boolean isSpawnPointSet() {

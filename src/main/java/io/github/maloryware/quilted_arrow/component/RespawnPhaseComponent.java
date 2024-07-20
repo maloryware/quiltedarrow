@@ -9,6 +9,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
@@ -19,12 +20,6 @@ public class RespawnPhaseComponent implements Component, AutoSyncedComponent {
 
 	private @Nullable RespawnPhase respawnPhase;
 
-	private double deathposX;
-	private double deathposY;
-	private double deathposZ;
-	private int waystoneposX;
-	private int waystoneposY;
-	private int waystoneposZ;
 
 	public Optional<RespawnPhase> getRespawnPhase() {
 		return Optional.ofNullable(this.respawnPhase);
@@ -40,64 +35,60 @@ public class RespawnPhaseComponent implements Component, AutoSyncedComponent {
 
     }
 
-	public void closePhase(Entity provider){
+	public void closePhase(){
 		this.respawnPhase = null;
+	}
+
+	@Override
+	public void writeToNbt(@NotNull NbtCompound tag) {
+
+		if (this.respawnPhase != null) {
+
+			final var respawnPhaseNbt = new NbtCompound();
+
+			respawnPhaseNbt.putDouble("deathPositionX", this.respawnPhase.deathPos().getX());
+			respawnPhaseNbt.putDouble("deathPositionY", this.respawnPhase.deathPos().getY());
+			respawnPhaseNbt.putDouble("deathPositionZ", this.respawnPhase.deathPos().getZ());
+
+			respawnPhaseNbt.putDouble("waystonePositionX",this.respawnPhase.nearestWaystone().getX());
+			respawnPhaseNbt.putDouble("waystonePositionY",this.respawnPhase.nearestWaystone().getY());
+			respawnPhaseNbt.putDouble("waystonePositionZ",this.respawnPhase.nearestWaystone().getZ());
+
+			tag.put("quilted_arrow:respawnPhase", respawnPhaseNbt);
+		}
+
+		else {
+			tag.remove("quilted_arrow:respawnPhase");
+		}
 	}
 
 	@Override
 	public void readFromNbt(NbtCompound tag) {
 
-		this.deathposX = tag.getDouble("deathPositionX");
-		this.deathposY = tag.getDouble("deathPositionY");
-		this.deathposZ = tag.getDouble("deathPositionZ");
-		this.waystoneposX = tag.getInt("waystonePositionX");
-		this.waystoneposY = tag.getInt("waystonePositionY");
-		this.waystoneposZ = tag.getInt("waystonePositionZ");
+		if (tag.get("quilted_arrow:respawnPhase") instanceof NbtCompound respawnPhaseNbt) {
 
-	}
+			final double deathPositionX = respawnPhaseNbt.getDouble("deathPositionX");
+			final double deathPositionY = respawnPhaseNbt.getDouble("deathPositionY");
+			final double deathPositionZ = respawnPhaseNbt.getDouble("deathPositionZ");
 
-	@Override
-	public void writeToNbt(NbtCompound tag) {
-		if(respawnPhase == null){
-			tag.remove("deathPositionX");
-			tag.remove("deathPositionY");
-			tag.remove("deathPositionZ");
+			final double waystonePositionX = respawnPhaseNbt.getDouble("waystonePositionX");
+			final double waystonePositionY = respawnPhaseNbt.getDouble("waystonePositionY");
+			final double waystonePositionZ = respawnPhaseNbt.getDouble("waystonePositionZ");
 
-			tag.remove("waystonePositionX");
-			tag.remove("waystonePositionY");
-			tag.remove("waystonePositionZ");
+			this.respawnPhase = new RespawnPhase(
+				new Vec3d(deathPositionX,deathPositionY,deathPositionZ),
+				new Vec3d(waystonePositionX, waystonePositionY, waystonePositionZ)
+			);
+
 		}
-		else {
-			tag.putDouble("deathPositionX", this.respawnPhase.deathPos.x);
-			tag.putDouble("deathPositionY", this.respawnPhase.deathPos.y);
-			tag.putDouble("deathPositionZ", this.respawnPhase.deathPos.z);
-
-			tag.putDouble("waystonePositionX", this.respawnPhase.nearestWaystone.x);
-			tag.putDouble("waystonePositionY", this.respawnPhase.nearestWaystone.y);
-			tag.putDouble("waystonePositionZ", this.respawnPhase.nearestWaystone.z);
-		}
-
 	}
 
-
-
-	// huh, unsure what to do here
-
-
-	public Vec3d getDeathPos(PlayerEntity provider){
-		return Vec3d.of(BlockPos.create(
-			RESPAWN.get(provider).deathposX,
-			RESPAWN.get(provider).deathposY,
-			RESPAWN.get(provider).deathposZ
-			));
+	public Vec3d getDeathPos(){
+		return this.respawnPhase.deathPos;
 	}
 
-	public Vec3d getNearestWaystone(PlayerEntity provider){
-		return Vec3d.of(BlockPos.create(
-			RESPAWN.get(provider).waystoneposX,
-			RESPAWN.get(provider).waystoneposY,
-			RESPAWN.get(provider).waystoneposZ
-		));
+	public Vec3d getNearestWaystone(){
+		return this.respawnPhase.nearestWaystone;
 	}
 
 

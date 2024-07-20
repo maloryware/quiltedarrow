@@ -20,19 +20,12 @@ public class QuiltedArrow implements ModInitializer {
 	@Override
     public void onInitialize(ModContainer mod) {
 
-
 		GeckoLib.initialize();
-
-        LOGGER.info("hi chat :3c ummm this is ur logger speaking; say hello to quilted arrow chat :333");
-
 		// ORDER IDIOT, THE FUCKING ORDER IN WHICH YOU REGISTER THOSE FUCKING ENTRYPOINTS NMATTERS GRAAHAZ<HHA0HAHAHHAHAHBAHB
-
 		QArrowEffects.register();
 		QArrowItems.register();
 		QArrowItemTabs.register();
-
 		QArrowBlocks.register();
-
 		QArrowEvents.register();
 
     }

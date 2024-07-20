@@ -27,7 +27,7 @@ public class ComponentRegistryHelper implements EntityComponentInitializer {
     }
 
 	public static void endRespawnPhase(Entity provider){
-		RESPAWN.get(provider).closePhase(provider);
+		RESPAWN.get(provider).closePhase();
 	}
 	public static void startRespawnPhase(Entity provider){
 		RESPAWN.get(provider).generateRespawnPhaseObject(provider);

@@ -8,7 +8,6 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.GameMode;
 import net.minecraft.world.World;
@@ -36,6 +35,7 @@ public abstract class PlayerEntityMixin extends Entity {
 		super(variant, world);
 	}
 
+	/*
 	public double distanceBetween(Vec3d first, Vec3d second){
 		float f = (float) (first.getX() - second.getX());
 		float g = (float) (first.getY() - second.getY());
@@ -43,6 +43,10 @@ public abstract class PlayerEntityMixin extends Entity {
 		return MathHelper.sqrt(f * f + g * g + h * h);
 
 	}
+
+
+	 */
+
 	@Inject(
 		method = "tick",
 		at = @At(
@@ -54,25 +58,49 @@ public abstract class PlayerEntityMixin extends Entity {
 	public void doRespawnProcedure(CallbackInfo ci) {
 
 		PlayerEntity player = (PlayerEntity) (Object) this;
-		@Nullable Vec3d deathPos = RESPAWN.get(player).getDeathPos(player);
-		@Nullable Vec3d nearestWaystone = RESPAWN.get(player).getNearestWaystone(player);
 
 		try {
 
-			if (getRespawnPhase(player).isPresent()) {
+			@Nullable Vec3d deathPos = RESPAWN.get(player).getDeathPos();
+			@Nullable Vec3d nearestWaystone = RESPAWN.get(player).getNearestWaystone();
 
+			if (getRespawnPhase(player) != null) {
+
+				Vec3d target = player.getPos().subtract(nearestWaystone);
+
+				double currentDistance = player.getPos().distanceTo(nearestWaystone);
+				double totalDistance = deathPos.distanceTo(nearestWaystone);
+				double thirdOfDistance = totalDistance/3;
 
 				player.lookAt(player.getCommandSource().getEntityAnchor(), nearestWaystone);
 
-				if(distanceBetween(player.getPos(), nearestWaystone) < (distanceBetween(deathPos, nearestWaystone))/3){
+
+				if(currentDistance > thirdOfDistance){
+
+					// player.updateVelocity((float) (totalDistance/currentDistance*0.1), target);
 					// speed up
+					player.travel(target);
 				}
-				else if(distanceBetween(player.getPos(), nearestWaystone) > 2 * ((distanceBetween(deathPos, nearestWaystone))/3)){
+				else if(currentDistance < thirdOfDistance * 2){
+
+					// player.updateVelocity((float) (currentDistance/totalDistance*0.5), target);
 					// slow down
+					player.travel(target);
 				}
 				else {
+
+					// player.setVelocity(target.multiply(0.1));
 					// keep speed
+					player.travel(target);
 				}
+
+
+
+				player.velocityDirty = true;
+
+
+
+
 
 				QuiltedArrow.LOGGER.info("Moving toward location... Velocity: {}", player.getVelocity());
 
@@ -80,7 +108,7 @@ public abstract class PlayerEntityMixin extends Entity {
 
 
 			if (nearestWaystone.isInRange(player.getPos(), 3)
-				&& getRespawnPhase(player).isPresent()
+				&& player.getAbilities().allowFlying
 				&& player instanceof ServerPlayerEntity serverPlayerEntity) {
 
 				QuiltedArrow.LOGGER.info("Arrived at location.");
@@ -91,12 +119,14 @@ public abstract class PlayerEntityMixin extends Entity {
 			}
 		}
 
-		catch(NullPointerException | ArrayIndexOutOfBoundsException e){
-			if(getRespawnPhase(player).isPresent()) {
-				endRespawnPhase(player);
+		catch(NullPointerException e){
+			if(getRespawnPhase(player) != null) {
+
 				QuiltedArrow.LOGGER.info("Exception caught: {}", e.toString());
 				player.sendSystemMessage(Text.of("No waystone found."));
+				endRespawnPhase(player);
 			}
+
 		}
     }
 

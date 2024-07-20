@@ -12,12 +12,14 @@ import static io.github.maloryware.quilted_arrow.component.ComponentRegistryHelp
 @Mixin(PlayerManager.class)
 public abstract class PlayerManagerMixin {
 
+
+
 	@Inject(
 		method = "respawnPlayer",
 		at = @At(value = "INVOKE", target =  "Lnet/minecraft/server/world/ServerWorld;onPlayerRespawned(Lnet/minecraft/server/network/ServerPlayerEntity;)V")
 	)
 
-	private void spectateRespawn(ServerPlayerEntity player, boolean alive, CallbackInfoReturnable<ServerPlayerEntity> cir) {
+	private void onRespawn(ServerPlayerEntity player, boolean alive, CallbackInfoReturnable<ServerPlayerEntity> cir) {
 		startRespawnPhase(player); // write to the nbt tag
 
 	}

@@ -11,6 +11,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class TitleScreenMixin {
     @Inject(method = "init", at = @At("TAIL"))
     public void onInit(CallbackInfo ci) {
-        QuiltedArrow.LOGGER.info("!---> Quilted Arrow loaded, let's hope nothing breaks...");
+        QuiltedArrow.LOGGER.info("hi chat :3c ummm this is ur logger speaking; say hello to quilted arrow chat :333");
     }
 }

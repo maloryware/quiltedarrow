@@ -34,18 +34,6 @@ public abstract class PlayerEntityMixin extends Entity {
 		super(variant, world);
 	}
 
-	/*
-	public double distanceBetween(Vec3d first, Vec3d second){
-		float f = (float) (first.getX() - second.getX());
-		float g = (float) (first.getY() - second.getY());
-		float h = (float) (first.getZ() - second.getZ());
-		return MathHelper.sqrt(f * f + g * g + h * h);
-
-	}
-
-
-	 */
-
 	@Inject(
 		method = "tick",
 		at = @At(
@@ -62,6 +50,7 @@ public abstract class PlayerEntityMixin extends Entity {
 
 			respawnPhase -> {
 
+
 				Vec3d deathPos = respawnPhase.deathPos();
 				Vec3d nearestWaystone = respawnPhase.nearestWaystone();
 				Vec3d target = player.getPos().subtract(nearestWaystone);
@@ -70,40 +59,47 @@ public abstract class PlayerEntityMixin extends Entity {
 				double totalDistance = deathPos.distanceTo(nearestWaystone);
 				double thirdOfDistance = totalDistance/3;
 
-				player.lookAt(player.getCommandSource().getEntityAnchor(), nearestWaystone);
+				if (RESPAWN.get(player).getRespawnPhase().isPresent()) {
 
-				if(currentDistance > thirdOfDistance){
 
-					// player.updateVelocity((float) (totalDistance/currentDistance*0.1), target);
-					// speed up
-					player.travel(target);
+
+
+					player.lookAt(player.getCommandSource().getEntityAnchor(), nearestWaystone);
+
+					if(currentDistance > thirdOfDistance){
+
+						// player.updateVelocity((float) (totalDistance/currentDistance*0.1), target);
+						// speed up
+						player.travel(target);
+					}
+
+					else if(currentDistance < thirdOfDistance * 2){
+
+						// player.updateVelocity((float) (currentDistance/totalDistance*0.5), target);
+						// slow down
+						player.travel(target);
+					}
+
+					else {
+
+						// player.setVelocity(target.multiply(0.1));
+						// keep speed
+						player.travel(target);
+					}
+
+					player.velocityDirty = true;
+					QuiltedArrow.LOGGER.info("Moving toward location... Velocity: {}", player.getVelocity());
 				}
 
-				else if(currentDistance < thirdOfDistance * 2){
-
-					// player.updateVelocity((float) (currentDistance/totalDistance*0.5), target);
-					// slow down
-					player.travel(target);
-				}
-
-				else {
-
-					// player.setVelocity(target.multiply(0.1));
-					// keep speed
-					player.travel(target);
-				}
-
-				player.velocityDirty = true;
-				QuiltedArrow.LOGGER.info("Moving toward location... Velocity: {}", player.getVelocity());
-
-				if (nearestWaystone.isInRange(player.getPos(), 3)
+				if (player.getPos().isInRange(nearestWaystone, 3)
 					&& player.getAbilities().allowFlying
 					&& player instanceof ServerPlayerEntity serverPlayerEntity) {
 
 					QuiltedArrow.LOGGER.info("Arrived at location.");
 					endRespawnPhase(player);
-					final boolean changed = serverPlayerEntity.changeGameMode(GameMode.SURVIVAL);
 
+					final boolean changed = serverPlayerEntity.changeGameMode(GameMode.SURVIVAL);
+					var respawn = RESPAWN.get(player).getRespawnPhase();
 					QuiltedArrow.LOGGER.info("Setting gamemode to survival: {} ", changed);
 				}
 			});

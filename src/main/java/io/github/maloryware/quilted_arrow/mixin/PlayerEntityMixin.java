@@ -54,7 +54,7 @@ public abstract class PlayerEntityMixin extends Entity {
 
 					Vec3d deathPos = respawnPhase.deathPos();
 					Vec3d nearestWaystone = respawnPhase.nearestWaystone();
-					Vec3d target = player.getPos().subtract(nearestWaystone);
+					Vec3d target = nearestWaystone.subtract(deathPos).normalize();
 
 
 					double currentDistance = player.getPos().distanceTo(nearestWaystone);
@@ -63,25 +63,25 @@ public abstract class PlayerEntityMixin extends Entity {
 
 					player.lookAt(player.getCommandSource().getEntityAnchor(), nearestWaystone);
 
-					if(currentDistance > thirdOfDistance){
+					if(currentDistance > thirdOfDistance * 2){
 
-						// player.updateVelocity((float) (totalDistance/currentDistance*0.1), target);
+						player.setVelocity(target.multiply((totalDistance/currentDistance)*0.5));
 						// speed up
-						client.travel(target);
+
 					}
 
-					else if(currentDistance < thirdOfDistance * 2){
+					else if(currentDistance < thirdOfDistance){
 
-						// player.updateVelocity((float) (currentDistance/totalDistance*0.5), target);
+						player.setVelocity(target.multiply((currentDistance/totalDistance)));
 						// slow down
-						client.travel(target);
+
 					}
 
 					else {
 
-						// player.setVelocity(target.multiply(0.1));
+						player.setVelocity(target.multiply(0.5));
 						// keep speed
-						client.travel(target);
+
 					}
 
 					client.velocityDirty = true;
@@ -89,9 +89,11 @@ public abstract class PlayerEntityMixin extends Entity {
 
 					QuiltedArrow.LOGGER.info("Moving toward location... Velocity: {}", client.getVelocity());
 
-					if (nearestWaystone.isInRange(player.getPos(), 3)) {
+					if (nearestWaystone.isInRange(player.getPos(), 3)
+					&& !player.isInsideWall()) {
 
 						QuiltedArrow.LOGGER.info("Arrived at location.");
+						player.travel(player.getPos());
 						endRespawnPhase(player);
 						final boolean changed = player.changeGameMode(GameMode.SURVIVAL);
 

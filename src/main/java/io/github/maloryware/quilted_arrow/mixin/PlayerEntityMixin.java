@@ -34,6 +34,8 @@ public abstract class PlayerEntityMixin extends Entity {
 		super(variant, world);
 	}
 
+
+
 	@Inject(
 		method = "tick",
 		at = @At(
@@ -44,25 +46,20 @@ public abstract class PlayerEntityMixin extends Entity {
 	)
 	public void doRespawnProcedure(CallbackInfo ci) {
 
-		PlayerEntity player = (PlayerEntity) (Object) this;
+		if ((Object) this instanceof ServerPlayerEntity player) {
+			RESPAWN.get(player).getRespawnPhase().ifPresent(
 
-		RESPAWN.get(player).getRespawnPhase().ifPresent(
+				respawnPhase -> {
+					PlayerEntity client = (PlayerEntity) (Object) this;
 
-			respawnPhase -> {
-
-
-				Vec3d deathPos = respawnPhase.deathPos();
-				Vec3d nearestWaystone = respawnPhase.nearestWaystone();
-				Vec3d target = player.getPos().subtract(nearestWaystone);
-
-				double currentDistance = player.getPos().distanceTo(nearestWaystone);
-				double totalDistance = deathPos.distanceTo(nearestWaystone);
-				double thirdOfDistance = totalDistance/3;
-
-				if (RESPAWN.get(player).getRespawnPhase().isPresent()) {
+					Vec3d deathPos = respawnPhase.deathPos();
+					Vec3d nearestWaystone = respawnPhase.nearestWaystone();
+					Vec3d target = player.getPos().subtract(nearestWaystone);
 
 
-
+					double currentDistance = player.getPos().distanceTo(nearestWaystone);
+					double totalDistance = deathPos.distanceTo(nearestWaystone);
+					double thirdOfDistance = totalDistance/3;
 
 					player.lookAt(player.getCommandSource().getEntityAnchor(), nearestWaystone);
 
@@ -70,41 +67,42 @@ public abstract class PlayerEntityMixin extends Entity {
 
 						// player.updateVelocity((float) (totalDistance/currentDistance*0.1), target);
 						// speed up
-						player.travel(target);
+						client.travel(target);
 					}
 
 					else if(currentDistance < thirdOfDistance * 2){
 
 						// player.updateVelocity((float) (currentDistance/totalDistance*0.5), target);
 						// slow down
-						player.travel(target);
+						client.travel(target);
 					}
 
 					else {
 
 						// player.setVelocity(target.multiply(0.1));
 						// keep speed
-						player.travel(target);
+						client.travel(target);
 					}
 
-					player.velocityDirty = true;
-					QuiltedArrow.LOGGER.info("Moving toward location... Velocity: {}", player.getVelocity());
-				}
+					client.velocityDirty = true;
+					client.velocityModified = true;
 
-				if (player.getPos().isInRange(nearestWaystone, 3)
-					&& player.getAbilities().allowFlying
-					&& player instanceof ServerPlayerEntity serverPlayerEntity) {
+					QuiltedArrow.LOGGER.info("Moving toward location... Velocity: {}", client.getVelocity());
 
-					QuiltedArrow.LOGGER.info("Arrived at location.");
-					endRespawnPhase(player);
+					if (nearestWaystone.isInRange(player.getPos(), 3)) {
 
-					final boolean changed = serverPlayerEntity.changeGameMode(GameMode.SURVIVAL);
-					var respawn = RESPAWN.get(player).getRespawnPhase();
-					QuiltedArrow.LOGGER.info("Setting gamemode to survival: {} ", changed);
-				}
-			});
+						QuiltedArrow.LOGGER.info("Arrived at location.");
+						endRespawnPhase(player);
+						final boolean changed = player.changeGameMode(GameMode.SURVIVAL);
 
-	}
+						QuiltedArrow.LOGGER.info("Setting gamemode to survival: {} ", changed);
+					}
+				});
+
+		}
+		}
+
+
 
 	@Overwrite()
 	public static Optional<Vec3d> findRespawnPosition(ServerWorld world, BlockPos pos,

@@ -7,6 +7,7 @@ import net.blay09.mods.waystones.core.PlayerWaystoneManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -23,12 +24,19 @@ public class RespawnPhaseComponent implements Component, AutoSyncedComponent {
 	}
 
 	// implementation...
-	public record RespawnPhase(Vec3d deathPos, Vec3d nearestWaystone)  {
+	public record RespawnPhase(Vec3d deathPos, @Nullable Vec3d nearestWaystone)  {
 
 	}
 
-	public void generateRespawnPhaseObject(Entity provider){
-		this.respawnPhase = new RespawnPhase(provider.getPos(), Vec3d.of(PlayerWaystoneManager.getNearestWaystone((PlayerEntity) provider).getPos()));
+	public void generateRespawnPhaseObject(Entity provider) {
+
+        @Nullable BlockPos waystoneCheck = PlayerWaystoneManager.getNearestWaystone((PlayerEntity) provider).getPos();
+        Vec3d nearestWaystone = null;
+        if (waystoneCheck != null) {
+            nearestWaystone = Vec3d.of(PlayerWaystoneManager.getNearestWaystone((PlayerEntity) provider).getPos());
+        }
+
+        this.respawnPhase = new RespawnPhase(provider.getPos(), nearestWaystone);
 
     }
 

@@ -1,10 +1,11 @@
 package io.github.maloryware.quilted_arrow.event;
 
+import io.github.maloryware.quilted_arrow.QuiltedArrow;
 import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.world.GameMode;
 
-import static io.github.maloryware.quilted_arrow.component.ComponentRegistryHelper.startRespawnPhase;
+import static io.github.maloryware.quilted_arrow.component.ComponentRegistryHelper.*;
 
 public class QArrowEvents {
 
@@ -13,6 +14,13 @@ public class QArrowEvents {
 		if(!alive){
 			player.changeGameMode(GameMode.SPECTATOR);
 			startRespawnPhase(player);
+			RESPAWN.get(player).getRespawnPhase().ifPresent( respawnPhase -> {
+				if (respawnPhase.nearestWaystone() == null) {
+					QuiltedArrow.LOGGER.info("No waystone found.");
+					endRespawnPhase(player);
+					player.changeGameMode(GameMode.SURVIVAL);
+				}
+			});
 		}
 	}
 

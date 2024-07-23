@@ -13,6 +13,7 @@ import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Debug;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -34,8 +35,6 @@ public abstract class PlayerEntityMixin extends Entity {
 		super(variant, world);
 	}
 
-
-
 	@Inject(
 		method = "tick",
 		at = @At(
@@ -47,19 +46,40 @@ public abstract class PlayerEntityMixin extends Entity {
 	public void doRespawnProcedure(CallbackInfo ci) {
 
 		if ((Object) this instanceof ServerPlayerEntity player) {
-			RESPAWN.get(player).getRespawnPhase().ifPresent(
+			RESPAWN.get(player).getRespawnPhase().ifPresentOrElse(
 
 				respawnPhase -> {
 					PlayerEntity client = (PlayerEntity) (Object) this;
 
 					Vec3d deathPos = respawnPhase.deathPos();
 					Vec3d nearestWaystone = respawnPhase.nearestWaystone();
-					Vec3d target = nearestWaystone.subtract(deathPos).normalize();
+					Vec3d target = nearestWaystone.subtract(player.getPos()).normalize();
 
 
 					double currentDistance = player.getPos().distanceTo(nearestWaystone);
 					double totalDistance = deathPos.distanceTo(nearestWaystone);
 					double thirdOfDistance = totalDistance/3;
+
+
+
+					if (nearestWaystone.isInRange(player.getPos(), 3)) {
+
+						if (player.isInsideWall()) {
+
+							// TODO: code to find a valid respawn position goes here
+
+						} else {
+
+							QuiltedArrow.LOGGER.info("Arrived at location.");
+							player.travel(player.getPos());
+							endRespawnPhase(player);
+							final boolean changed = player.changeGameMode(GameMode.SURVIVAL);
+
+							QuiltedArrow.LOGGER.info("Setting gamemode to survival: {} ", changed);
+
+						}
+					}
+
 
 					player.lookAt(player.getCommandSource().getEntityAnchor(), nearestWaystone);
 
@@ -88,22 +108,22 @@ public abstract class PlayerEntityMixin extends Entity {
 					client.velocityModified = true;
 
 					QuiltedArrow.LOGGER.info("Moving toward location... Velocity: {}", client.getVelocity());
+				},
 
-					if (nearestWaystone.isInRange(player.getPos(), 3)
-					&& !player.isInsideWall()) {
+				() -> {
+					QuiltedArrow.LOGGER.info("No waystone found.");
+					endRespawnPhase(player);
+					player.changeGameMode(GameMode.SURVIVAL);
 
-						QuiltedArrow.LOGGER.info("Arrived at location.");
-						player.travel(player.getPos());
-						endRespawnPhase(player);
-						final boolean changed = player.changeGameMode(GameMode.SURVIVAL);
-
-						QuiltedArrow.LOGGER.info("Setting gamemode to survival: {} ", changed);
-					}
 				});
 
 		}
 		}
 
+	@Unique
+	private void findValidRespawnPosition() {
+
+	}
 
 
 	@Overwrite()

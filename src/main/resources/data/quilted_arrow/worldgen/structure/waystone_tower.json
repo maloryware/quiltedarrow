@@ -3,9 +3,9 @@
   "biomes": "#quilted_arrow:has_structure/waystone_tower",
   "step": "surface_structures",
   "spawn_overrides": {},
-  "terrain_adaptation": "none",
+  "terrain_adaptation": "beard_thin",
   "start_pool": "quilted_arrow:waystone_tower/bottom",
-  "size": 3,
+  "size": 4,
   "start_height": {
     "absolute": -13
   },

@@ -1,12 +1,12 @@
 {
-  "name": "quilted_arrow:waystone_tower/middle",
+  "name": "quilted_arrow:waystone_tower/bottom",
   "fallback": "minecraft:empty",
   "elements": [
 
     {
       "weight": 1,
       "element": {
-        "location": "quilted_arrow:waystone_tower_middle",
+        "location": "quilted_arrow:waystone_tower_bottom",
         "processors": "minecraft:empty",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"

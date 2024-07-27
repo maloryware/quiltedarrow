@@ -2,7 +2,7 @@
 
   "structures": [
     {
-      "structure": "waystone_tower",
+      "structure": "quilted_arrow:waystone_tower",
       "weight": 1
     }
   ],

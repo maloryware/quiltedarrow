@@ -1,7 +1,10 @@
 package io.github.maloryware.quilted_arrow.event;
 
 import io.github.maloryware.quilted_arrow.QuiltedArrow;
+import net.fabricmc.fabric.api.entity.event.v1.EntityElytraEvents;
 import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.world.GameMode;
 
@@ -10,11 +13,11 @@ import static io.github.maloryware.quilted_arrow.component.ComponentRegistryHelp
 public class QArrowEvents {
 
 
-	public static void changeToSpectator(ServerPlayerEntity oldplayer, ServerPlayerEntity player, boolean alive){
-		if(!alive){
+	public static void changeToSpectator(ServerPlayerEntity oldplayer, ServerPlayerEntity player, boolean alive) {
+		if (!alive) {
 			player.changeGameMode(GameMode.SPECTATOR);
 			startRespawnPhase(player);
-			RESPAWN.get(player).getRespawnPhase().ifPresent( respawnPhase -> {
+			RESPAWN.get(player).getRespawnPhase().ifPresent(respawnPhase -> {
 				if (respawnPhase.nearestWaystone() == null) {
 					QuiltedArrow.LOGGER.info("No waystone found.");
 					endRespawnPhase(player);
@@ -24,11 +27,23 @@ public class QArrowEvents {
 		}
 	}
 
+	public static boolean ceaseFlightUnderwater(LivingEntity entity, boolean b) {
+		if (entity instanceof PlayerEntity playerEntity) {
+			if (playerEntity.isSubmergedInWater()) {
+				playerEntity.stopFallFlying();
+			}
+		}
+		return true;
+	}
+
+	@SuppressWarnings("deprecation") // shut UP I KNOW IT'S DEPRECATED I'LL SWITCH TO THE QUILT VERSION WHEN I FUCKING DIE
 	public static void register() {
 
 		ServerPlayerEvents.AFTER_RESPAWN.register(QArrowEvents::changeToSpectator);
+		EntityElytraEvents.CUSTOM.register(QArrowEvents::ceaseFlightUnderwater);
 
 
 	}
+
 }
 

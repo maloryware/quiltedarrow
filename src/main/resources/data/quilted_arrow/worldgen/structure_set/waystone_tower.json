@@ -1,0 +1,20 @@
+{
+
+  "structures": [
+    {
+      "structure": "waystone_tower",
+      "weight": 1
+    }
+  ],
+
+  "placement": {
+
+    "salt": 903476948,
+    "spacing": 12,
+    "separation": 6,
+    "type": "minecraft:random_spread"
+
+  }
+
+
+}

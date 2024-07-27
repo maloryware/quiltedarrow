@@ -136,6 +136,10 @@ dependencies {
 		exclude(group: "net.fabricmc.fabric-api")
 	}
 
+	// TODO: add Twigs, BetterEnd, Magnum Torch, Lightest Lamps, More Beautiful Torches, Connected Glass,
+	//  Macaw's Windows + Lights & Lamps,
+	//  Create, Create: Design & Decor
+
 	// Waystones Fabric
 	modImplementation "curse.maven:waystones-fabric-500087:5500753"
 	// Balm Fabric

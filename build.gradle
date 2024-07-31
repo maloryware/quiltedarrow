@@ -17,6 +17,7 @@ repositories {
 	// See https://docs.gradle.org/current/userguide/declaring_repositories.html
 	// for more information about repositories.
 
+	maven { url = "https://maven.firstdarkdev.xyz/snapshots" } // LDLib, Photon
 
 	// GeckoLib
 	maven {
@@ -125,6 +126,14 @@ dependencies {
 	}
 	*/
 	modImplementation libs.quilt.loader
+
+
+	// LowDragMC's shit
+	// doesn't work so it's commented out for the time being
+
+	//	implementation("com.lowdragmc.photon:photon-fabric-1.20.1:1.0.7.a")  { transitive = false }
+	//  implementation("com.lowdragmc.ldlib:ldlib-fabric-1.20.1:1.0.26")  { transitive = false }
+
 
 	// Cardinal Components API
 	modImplementation ("dev.onyxstudios.cardinal-components-api:cardinal-components-base:${project.cca_version}"){

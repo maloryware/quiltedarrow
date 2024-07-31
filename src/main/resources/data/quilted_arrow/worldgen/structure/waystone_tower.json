@@ -3,13 +3,13 @@
   "biomes": "#quilted_arrow:has_structure/waystone_tower",
   "step": "surface_structures",
   "spawn_overrides": {},
-  "terrain_adaptation": "beard_thin",
+  "terrain_adaptation": "encapsulate",
   "start_pool": "quilted_arrow:waystone_tower/bottom",
   "size": 4,
   "start_height": {
-    "absolute": -13
+    "absolute": 0
   },
   "project_start_to_heightmap": "WORLD_SURFACE_WG",
-  "max_distance_from_center": 80,
+  "max_distance_from_center": 127,
   "use_expansion_hack": false
 }

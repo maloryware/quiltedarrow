@@ -10,7 +10,9 @@
     "PlayerEntityMixin",
     "PlayerManagerMixin",
     "QArrowMixin",
-    "ServerPlayerEntityMixin"
+    "ServerPlayerEntityMixin",
+    "WaystoneActivationMixin",
+    "WaystoneTickMixin"
   ],
   "client": [
     "TitleScreenMixin"

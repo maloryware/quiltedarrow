@@ -19,6 +19,23 @@ repositories {
 
 	maven { url = "https://maven.firstdarkdev.xyz/snapshots" } // LDLib, Photon
 
+
+
+	// Modrinth Advanced Maven Config
+	exclusiveContent {
+		forRepository {
+			maven {
+				name = "Modrinth"
+				url = "https://api.modrinth.com/maven"
+			}
+		}
+		filter {
+			includeGroup "maven.modrinth"
+		}
+	}
+
+
+
 	// GeckoLib
 	maven {
 		name = 'GeckoLib'
@@ -42,7 +59,6 @@ repositories {
 			includeGroupByRegex 'dev\\.onyxstudios.*'
 		}
 	}
-
 
 	// JEI stuff
 	maven {
@@ -128,11 +144,7 @@ dependencies {
 	modImplementation libs.quilt.loader
 
 
-	// LowDragMC's shit
-	// doesn't work so it's commented out for the time being
 
-	//	implementation("com.lowdragmc.photon:photon-fabric-1.20.1:1.0.7.a")  { transitive = false }
-	//  implementation("com.lowdragmc.ldlib:ldlib-fabric-1.20.1:1.0.26")  { transitive = false }
 
 
 	// Cardinal Components API
@@ -150,7 +162,6 @@ dependencies {
 	//  Create, Create: Design & Decor
 
 
-
 	// Waystones Fabric
 	modImplementation "curse.maven:waystones-fabric-500087:5500753"
 	// Balm Fabric
@@ -165,6 +176,13 @@ dependencies {
 		exclude(group: "net.fabricmc", module: "fabric-loader")
 		exclude(group: "net.fabricmc.fabric-api")
 	}
+
+
+	// TODO: add mods used to build structure as dependencies; fix waystone missing on structure
+
+	modImplementation("maven.modrinth:huge-structure-blocks:1.0.9")
+	modImplementation("maven.modrinth:heracles:1.1.13")
+	modImplementation("maven.modrinth:loquat:2.1.1")
 	// compile against the JEI API but do not include it at runtime
 	// modCompileOnlyApi("mezz.jei:jei-${mc_version}-common-api:${jei_version}")
 	// modCompileOnlyApi("mezz.jei:jei-${mc_version}-fabric-api:${jei_version}")

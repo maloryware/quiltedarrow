@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "quilted_arrow:item/woven_leather_padding"
-  }
-}

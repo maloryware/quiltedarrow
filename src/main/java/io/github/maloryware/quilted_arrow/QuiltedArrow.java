@@ -17,6 +17,7 @@ public class QuiltedArrow implements ModInitializer {
 
 	public static final String ID = "quilted_arrow";
 
+
 	@Override
     public void onInitialize(ModContainer mod) {
 

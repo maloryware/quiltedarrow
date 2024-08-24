@@ -10,6 +10,7 @@ public class QuiltedArrowClient implements ClientModInitializer {
 
 	public void onInitializeClient(ModContainer mod) {
 
+
 	}
 
 }

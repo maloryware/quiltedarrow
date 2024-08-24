@@ -27,20 +27,25 @@ public class QArrowEvents {
 		}
 	}
 
-	public static boolean ceaseFlightUnderwater(LivingEntity entity, boolean b) {
+	public static boolean ceaseFlightUnderwater(LivingEntity entity) {
 		if (entity instanceof PlayerEntity playerEntity) {
 			if (playerEntity.isSubmergedInWater()) {
 				playerEntity.stopFallFlying();
+				return false;
 			}
+			else {
+				return true;
+			}
+
 		}
-		return true;
+		return false;
 	}
 
 	@SuppressWarnings("deprecation") // shut UP I KNOW IT'S DEPRECATED I'LL SWITCH TO THE QUILT VERSION WHEN I FUCKING DIE
 	public static void register() {
 
 		ServerPlayerEvents.AFTER_RESPAWN.register(QArrowEvents::changeToSpectator);
-		EntityElytraEvents.CUSTOM.register(QArrowEvents::ceaseFlightUnderwater);
+		EntityElytraEvents.ALLOW.register(QArrowEvents::ceaseFlightUnderwater);
 
 
 	}

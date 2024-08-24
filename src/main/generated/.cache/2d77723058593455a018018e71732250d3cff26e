@@ -1,0 +1,10 @@
+// 1.20.1	2024-08-17T15:41:57.6625348	Waystones/Tags for minecraft:item
+9021f204ca986a2bfa45e14bf4dc76790fcecde4 data\waystones\tags\items\waystones.json
+fe5e5cea5e5ca56ee3586450595b403d476121b1 data\waystones\tags\items\bound_scrolls.json
+cdd7d6bf5c6b496845a13de8698f23c17e76e422 data\waystones\tags\items\warp_stones.json
+24ac9bc07609563a5d9962f154264e1910a54edb data\waystones\tags\items\single_use_warp_shards.json
+dcd86079247ff3578a5ed87919a2edc664753054 data\waystones\tags\items\sharestones.json
+ad327fa846eba36eb2d5826306992d4a43109585 data\waystones\tags\items\dyed_sharestones.json
+944d2487ab3412cf2a3b75ffd32a32086f4094be data\waystones\tags\items\return_scrolls.json
+fe7c29dd5c41c6d0443dd5cba9b4b1b14993a33e data\waystones\tags\items\warp_shards.json
+5127bed2040886d8478eb98e29a27848e2997163 data\waystones\tags\items\warp_scrolls.json

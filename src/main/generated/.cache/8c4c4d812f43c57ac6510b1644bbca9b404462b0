@@ -1,0 +1,6 @@
+// 1.20.1	2024-08-17T15:41:57.6635328	Waystones/Tags for minecraft:block
+6443fd3744c0fc7db00995328c14b2d5b6dc37d3 data\minecraft\tags\blocks\mineable\pickaxe.json
+dcd86079247ff3578a5ed87919a2edc664753054 data\waystones\tags\blocks\sharestones.json
+6443fd3744c0fc7db00995328c14b2d5b6dc37d3 data\waystones\tags\blocks\is_teleport_target.json
+249ddfd013237e57932a8bbe359e02ef8b154f3e data\waystones\tags\blocks\waystones.json
+ad327fa846eba36eb2d5826306992d4a43109585 data\waystones\tags\blocks\dyed_sharestones.json

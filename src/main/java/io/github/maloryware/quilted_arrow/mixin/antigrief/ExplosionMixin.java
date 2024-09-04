@@ -32,7 +32,9 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 
+import java.util.Iterator;
 import java.util.ListIterator;
+import java.util.Objects;
 
 @SuppressWarnings("rawtypes")
 @Mixin(Explosion.class)
@@ -108,14 +110,40 @@ public abstract class ExplosionMixin {
 	@ModifyExpressionValue(method = "affectWorld", at = @At("MIXINEXTRAS:EXPRESSION"))
 	public ObjectListIterator intersectsWithStructure(ObjectListIterator original) {
 
-
 		if (this.world instanceof ServerWorld serverWorld) {
-			ObjectListIterator filtered = new ObjectListIterator(Iterators.filter(original, pos ->
-				serverWorld.getStructureManager().getStructureStartAt(
-					(BlockPos) pos,
-				RegistryKey.of(RegistryKeys.STRUCTURE_FEATURE,
-					new Identifier("quilted_arrow:waystone_tower"))
-			) == StructureStart.DEFAULT));
+
+			ObjectListIterator filtered = new ObjectListIterator(){
+
+
+				Iterator filtered = Iterators.filter(original, pos ->
+					serverWorld.getStructureManager().getStructureStartAt(
+						(BlockPos) pos,
+						RegistryKey.of(RegistryKeys.STRUCTURE_FEATURE,
+							new Identifier("quilted_arrow:waystone_tower"))
+					) == StructureStart.DEFAULT);
+
+
+				@Override
+				public boolean hasNext() {
+					return filtered.hasNext();
+				}
+
+				@Override
+				public Object next() {
+					return filtered.next();
+				}
+
+				@Override
+				public Object previous() {return null;}
+				@Override
+				public int nextIndex() {return 0;}
+				@Override
+				public int previousIndex() {return 0;}
+				@Override
+				public boolean hasPrevious() {return false;}
+
+			};
+
 			return filtered;
 		}
 		return original;

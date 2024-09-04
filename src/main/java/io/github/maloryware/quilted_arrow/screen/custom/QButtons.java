@@ -20,7 +20,7 @@ public class QButtons {
 		}).positionAndSize(x, y, width, height).build();
 	}
 
-	public static ButtonWidget createQTitleScreenButton(Screen parent) {
+	public static ButtonWidget createQTitleScreenButton(Screen parent, int anchor) {
 		MinecraftClient client = parent.getClient();
 		return ButtonWidget.builder(Text.of("Go to new title screen"), (btn) -> {
 			client.getToastManager().add(SystemToast.create(
@@ -29,7 +29,7 @@ public class QButtons {
 			client.setScreen(new CustomTitleScreen(Text.of("Huh whuh"), parent));
 		})
 			.tooltip(Tooltip.create(Text.of("Sends you to the new menu.")))
-			.positionAndSize(parent.width/2 + 100, parent.height / 2 - 10, 20, 20).build();
+			.positionAndSize(parent.width/2 + 100, anchor, 20, 20).build();
 	}
 
 

@@ -3,9 +3,7 @@ package io.github.maloryware.quilted_arrow.effect;
 
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
-import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffectType;
-import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 
 public class EnragedEffect extends StatusEffect {
@@ -24,8 +22,7 @@ public class EnragedEffect extends StatusEffect {
 			 * is done and ready.
 			 * veeery low priority atm
 			 */
-
-		entity.addStatusEffect(new StatusEffectInstance(StatusEffects.BAD_OMEN));
+			return;
 		}
 		super.applyUpdateEffect(entity, amp);
 

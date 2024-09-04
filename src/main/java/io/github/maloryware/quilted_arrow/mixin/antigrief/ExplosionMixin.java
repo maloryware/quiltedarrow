@@ -4,16 +4,12 @@ import com.google.common.collect.Iterators;
 import com.llamalad7.mixinextras.expression.Definition;
 import com.llamalad7.mixinextras.expression.Expression;
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
-import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
-import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.sugar.Share;
+import com.llamalad7.mixinextras.sugar.ref.LocalBooleanRef;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectIterators;
 import it.unimi.dsi.fastutil.objects.ObjectListIterator;
-import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.server.world.ServerWorld;
@@ -31,10 +27,10 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.Iterator;
-import java.util.ListIterator;
-import java.util.Objects;
 
 @SuppressWarnings("rawtypes")
 @Mixin(Explosion.class)
@@ -72,65 +68,35 @@ public abstract class ExplosionMixin {
 	@Final
 	private ObjectArrayList<BlockPos> affectedBlocks;
 
-	@WrapMethod(method = "affectWorld")
-	public void checkIfInsideStructure(boolean particles, Operation<Void> original){
-		BlockPos boom = BlockPos.create(this.x, this.y, this.z);
-		if(this.world instanceof ServerWorld serverWorld
-				&& serverWorld.getStructureManager().getStructureStartAt(
-					boom,
-					RegistryKey.of(RegistryKeys.STRUCTURE_FEATURE,
-						new Identifier("quilted_arrow:waystone_tower"))
-				) == StructureStart.DEFAULT){
-
-			original.call(particles);
-
-		}
-		else {
-			if(this.world.isClient) this.world.playSound(
-				this.x, this.y, this.z,
-				SoundEvents.BLOCK_FIRE_EXTINGUISH,
-				SoundCategory.BLOCKS,
-				4.0F,
-				(1.0F + (this.world.random.nextFloat() - this.world.random.nextFloat()) * 0.2F) * 0.7F,
-				false
-			);
-			if(this.getCausingEntity() instanceof PlayerEntity player){
-				player.sendSystemMessage(Text.of("The tower's immense peace subsidizes the explosion."));
-			}
-			if(!this.world.isClient){
-				ItemEntity plopped = new ItemEntity(world, x + 0.5f, y + 0.5f, z + 0.5f, new ItemStack(Items.TNT));
-				this.world.spawnEntity(plopped);
-			}
-		}
-	}
-
 	@Definition(id = "affectedBlocks", field = "Lnet/minecraft/world/explosion/Explosion;affectedBlocks:Lit/unimi/dsi/fastutil/objects/ObjectArrayList;")
 	@Definition(id = "iterator", method = "Lit/unimi/dsi/fastutil/objects/ObjectArrayList;iterator()Lit/unimi/dsi/fastutil/objects/ObjectListIterator;")
 	@Expression("this.affectedBlocks.iterator()")
 	@ModifyExpressionValue(method = "affectWorld", at = @At("MIXINEXTRAS:EXPRESSION"))
-	public ObjectListIterator intersectsWithStructure(ObjectListIterator original) {
-
+	public ObjectListIterator intersectsWithStructure(ObjectListIterator original, @Share("filtered")LocalBooleanRef wasFiltered) {
 		if (this.world instanceof ServerWorld serverWorld) {
 
-			ObjectListIterator filtered = new ObjectListIterator(){
+			return new ObjectListIterator(){
 
 
-				Iterator filtered = Iterators.filter(original, pos ->
-					serverWorld.getStructureManager().getStructureStartAt(
+				Iterator filtered1 = Iterators.filter(original, pos -> {
+					boolean e = serverWorld.getStructureManager().getStructureStartAt(
 						(BlockPos) pos,
 						RegistryKey.of(RegistryKeys.STRUCTURE_FEATURE,
 							new Identifier("quilted_arrow:waystone_tower"))
-					) == StructureStart.DEFAULT);
+					) == StructureStart.DEFAULT;
+					if(!e) wasFiltered.set(true);
+					return e;
+				});
 
 
 				@Override
 				public boolean hasNext() {
-					return filtered.hasNext();
+					return filtered1.hasNext();
 				}
 
 				@Override
 				public Object next() {
-					return filtered.next();
+					return filtered1.next();
 				}
 
 				@Override
@@ -143,10 +109,25 @@ public abstract class ExplosionMixin {
 				public boolean hasPrevious() {return false;}
 
 			};
-
-			return filtered;
 		}
 		return original;
+	}
+
+	@Inject(method = "affectWorld", at = @At("TAIL"))
+	public void onExplosionWithinBounds(boolean particles, CallbackInfo ci, @Share("filtered") LocalBooleanRef wasFiltered){
+		if(wasFiltered.get()){
+			if(this.world.isClient) this.world.playSound(
+				this.x, this.y, this.z,
+				SoundEvents.BLOCK_FIRE_EXTINGUISH,
+				SoundCategory.BLOCKS,
+				4.0F,
+				(1.0F + (this.world.random.nextFloat() - this.world.random.nextFloat()) * 0.2F) * 0.7F,
+				false
+			);
+			if(this.getCausingEntity() instanceof PlayerEntity player){
+				player.sendSystemMessage(Text.of("&l&cThe explosion seems to not affect the tower."));
+			}
+		}
 	}
 }
 

@@ -25,7 +25,7 @@ public class TitleScreenMixin extends Screen {
 
 	@Inject(method = "initWidgetsNormal", at = @At("RETURN"))
 	private void addTitleScreenWidgets(int y, int spacingY, CallbackInfo ci){
-		this.addDrawableChild(QButtons.createQTitleScreenButton(this));
+		this.addDrawableChild(QButtons.createQTitleScreenButton(this, y));
 	}
 
 }
